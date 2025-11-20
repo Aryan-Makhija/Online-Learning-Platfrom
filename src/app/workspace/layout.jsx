@@ -1,8 +1,14 @@
 import React from 'react'
+import WorkSpaceProvider from './Provider'
 
 const WorkSpacelayout = ({ children }) => {
     return (
-        <div>{children}</div>
+
+        <WorkSpaceProvider>
+
+            <div>{children}</div>
+
+        </WorkSpaceProvider>
     )
 }
 
