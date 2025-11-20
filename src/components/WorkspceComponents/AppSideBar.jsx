@@ -6,6 +6,7 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupConte
 import { Book, Compass, LayoutDashboard, Mail, ToolCaseIcon, User } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import AddnewCourse from "./AddnewCourse"
 
 
 
@@ -57,9 +58,14 @@ const AppSideBar = () => {
             </SidebarHeader>
             <SidebarContent>
                 <SidebarGroup >
+
+                    <AddnewCourse>
+
                     <Button>
                         Create New Course
                     </Button>
+
+                    </AddnewCourse>
                 </SidebarGroup>
 
 

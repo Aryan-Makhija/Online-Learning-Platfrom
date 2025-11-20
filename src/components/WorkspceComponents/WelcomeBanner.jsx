@@ -5,7 +5,7 @@ const WelcomeBanner = () => {
     <div className='p-5 rounded-xl bg-gradient-to-l from-blue-400 via-indigo-500  to-pink-600'>
 
       <h2 className='font-bold  text-2xl text-white  '>
-        Welcome To Online Learning banner
+        Welcome To Online Learning Platform
 
       </h2>
 
