@@ -45,7 +45,7 @@ const AddnewCourse = ({ children }) => {
             ...prev,
             [field]: value
         }))
-        console.log(formdata)
+  
     }
 
 
@@ -60,7 +60,7 @@ const AddnewCourse = ({ children }) => {
                 courseId: courseId
             })
 
-            // console.log(response.data)
+           
             router.push('/workspace/edit-course/',response.data?.courseId)
         } catch (err) {
             console.log(err.message)
