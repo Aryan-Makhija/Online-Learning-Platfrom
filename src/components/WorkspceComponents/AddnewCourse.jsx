@@ -19,21 +19,25 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { Button } from '../ui/button'
-import { Star } from 'lucide-react'
-
+import { Loader2Icon, Sparkle, Star } from 'lucide-react'
+import axios from 'axios'
+import { v4 as uuidv4 } from 'uuid';
+import { useRouter } from 'next/navigation'
 const AddnewCourse = ({ children }) => {
 
 
-    
+    const [loading, setloading] = useState(false)
     const [formdata, setformdata] = useState({
-        courseName: "",
-        courseDescription: "",
+        name: "",
+        description: "",
         includeVideo: false,
         noOfChapters: 1,
         level: "",
         category: ""
     })
 
+
+    const router = useRouter()
 
 
     const onHandleInputChange = (field, value) => {
@@ -45,8 +49,26 @@ const AddnewCourse = ({ children }) => {
     }
 
 
-    const onGenerate = () => {
-       return console.log(formdata)
+    const onGenerate = async () => {
+
+        const courseId = uuidv4()
+
+        setloading(true)
+        try {
+            const response = await axios.post("/api/generate-course-layout", {
+                ...formdata,
+                courseId: courseId
+            })
+
+            // console.log(response.data)
+            router.push('/workspace/edit-course/',response.data?.courseId)
+        } catch (err) {
+            console.log(err.message)
+        } finally {
+            setloading(false)
+        }
+
+
     }
 
     return (
@@ -59,12 +81,12 @@ const AddnewCourse = ({ children }) => {
                         <div className="flex flex-col gap-4 mt-3">
                             <div>
                                 <label>Course Name</label>
-                                <Input placeholder="Course Name" onChange={(event) => onHandleInputChange("courseName", event?.target.value)}></Input>
+                                <Input placeholder="Course Name" onChange={(event) => onHandleInputChange("name", event?.target.value)}></Input>
                             </div>
 
                             <div>
                                 <label>Course Description (Optional) </label>
-                                <Textarea placeholder="Course Description" onChange={(event) => onHandleInputChange("courseDescription", event?.target.value)}></Textarea>
+                                <Textarea placeholder="Course Description" onChange={(event) => onHandleInputChange("description", event?.target.value)}></Textarea>
                             </div>
 
                             <div>
@@ -99,8 +121,13 @@ const AddnewCourse = ({ children }) => {
                                 <Input onChange={(event) => onHandleInputChange("category", event?.target.value)} placeholder="Category (Seprated By Comma)"></Input>
                             </div>
 
-                            <Button onClick={onGenerate()} className="w-full bg-purple-500 text-white">
-                                <Star></Star> Generate Course
+                            <Button onClick={() => onGenerate()} className="w-full bg-purple-500 text-white" disabled={loading}>
+
+                                {
+                                    loading ? <Loader2Icon className='animate-spin'></Loader2Icon> : <Sparkle ></Sparkle>
+                                }
+                                Generate Course
+
                             </Button>
 
                         </div>
