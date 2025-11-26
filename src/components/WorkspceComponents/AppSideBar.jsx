@@ -22,17 +22,12 @@ const AppSideBar = () => {
         {
             title: "My Learning",
             icon: Book,
-            path: "/#"
+            path: "/workspace/my-learning"
         },
         {
             title: "Explore  Courses",
             icon: Compass,
-            path: "/#"
-        },
-        {
-            title: "Ai Tools",
-            icon: ToolCaseIcon,
-            path: "/#"
+            path: "/workspace/explore"
         },
         {
             title: "Billing",
@@ -42,7 +37,7 @@ const AppSideBar = () => {
         {
             title: "Profile",
             icon: User,
-            path: "/#"
+            path: "/workspace/profile"
         },
 
     ]
@@ -53,7 +48,7 @@ const AppSideBar = () => {
 
         <Sidebar>
             <SidebarHeader >
-                <Image src={"/logo.svg"} width={40} height={40}></Image>
+                <Link href="/"><div className='flex gap-2 font-bold items-center text-2xl'><Image src={"/logo.svg"} width={40} height={40}></Image>EduAI</div></Link>
 
             </SidebarHeader>
             <SidebarContent>
@@ -61,9 +56,9 @@ const AppSideBar = () => {
 
                     <AddnewCourse>
 
-                    <Button>
-                        Create New Course
-                    </Button>
+                        <Button>
+                            Create New Course
+                        </Button>
 
                     </AddnewCourse>
                 </SidebarGroup>
@@ -78,13 +73,16 @@ const AppSideBar = () => {
                                 Sidebaroptions.map((item, index) => (
                                     <SidebarMenuItem key={index}>
 
+
+
                                         <SidebarMenuButton asChild className="p-5">
-                                            <Link href={item.path} className={`text-[17px] ${path.includes(item.path) && "text-purple-600 bg-purple-200"}`}
-                                            
+                                            <Link
+                                                href={item.path}
+                                                className={`text-[17px] ${path === item.path ? "text-purple-600 bg-purple-200" : ""
+                                                    }`}
                                             >
                                                 <item.icon className="h-7 w-7" />
                                                 <span>{item.title}</span>
-
                                             </Link>
                                         </SidebarMenuButton>
                                     </SidebarMenuItem>

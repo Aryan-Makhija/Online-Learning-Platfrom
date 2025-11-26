@@ -1,0 +1,52 @@
+"use client"
+
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import EnrollCourseListCard from './EnrollCourseListCard'
+
+const EnrollCourseList = () => {
+
+    const [enrollcourse, setenrollcourse] = useState()
+    const getEnrollCourse = async () => {
+        try {
+            const response = await axios.get("/api/enroll-course")
+
+            // console.log(response.data)
+            setenrollcourse(response.data)
+     
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+
+    useEffect(() => {
+        getEnrollCourse()
+    }, [])
+
+
+    return enrollcourse?.length > 0 && (
+        <div className='mt-3'>
+
+            <h2 className='font-bold text-xl'>Continue Learning the Courses</h2>
+
+            <div className="mt-6 
+                grid 
+                grid-cols-1 
+                sm:grid-cols-2 
+                md:grid-cols-2 
+                lg:grid-cols-3 
+                xl:grid-cols-4 
+                gap-6
+                ">
+                {
+                    enrollcourse.map((course, index) => (
+                        <EnrollCourseListCard course={course?.courses} enrollcourse={enrollcourse} key={index}></EnrollCourseListCard>
+                    ))
+                }
+
+            </div>
+        </div>
+    )
+}
+
+export default EnrollCourseList

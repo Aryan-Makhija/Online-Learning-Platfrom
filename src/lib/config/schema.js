@@ -20,9 +20,20 @@ export const courseTable = pgTable("courses", {
     level: varchar().notNull(),
     category: varchar(),
     courseJson: json(),
+    courseContent: json(),
     userEmail: varchar("userEmail").references(() => usersTable.email).notNull()
 
 })
 
+
+
+
+export const enrollCourseTable = pgTable('enrollCourse', {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    cid: varchar('cid').references(() => courseTable.cid),
+    userEmail: varchar("userEmail").references(() => usersTable.email).notNull(),
+    completedChapters:json()
+
+})
 
 export default usersTable
