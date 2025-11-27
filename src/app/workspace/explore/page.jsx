@@ -17,13 +17,14 @@ const ExploreCourse = () => {
 
     const GetCoursesList = async () => {
         const response = await axios.get("/api/courses?courseId=0")
-
         setcourselist(response.data)
     }
 
     useEffect(() => {
         user && GetCoursesList()
     }, [user])
+
+    
     return (
         <div>
 

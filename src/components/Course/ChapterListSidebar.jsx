@@ -69,13 +69,7 @@ const ChapterListSidebar = () => {
                 ))
                 }
 
-                {/* {
-                    courseContent.map((chapters, index) => {
-                        return (
-                            console.log(chapters)
-                        )
-                    })
-                } */}
+         
 
 
 

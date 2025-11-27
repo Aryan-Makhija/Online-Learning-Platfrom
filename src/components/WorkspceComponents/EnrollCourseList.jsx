@@ -11,7 +11,7 @@ const EnrollCourseList = () => {
         try {
             const response = await axios.get("/api/enroll-course")
 
-            // console.log(response.data)
+
             setenrollcourse(response.data)
      
         } catch (err) {

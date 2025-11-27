@@ -7,7 +7,7 @@ import AppHeader from '@/components/WorkspceComponents/AppHeader'
 import axios from 'axios'
 import { useParams } from 'next/navigation'
 
-import React, {  useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const CoursePage = () => {
 
@@ -22,8 +22,7 @@ const CoursePage = () => {
 
         const result = await axios.get('/api/enroll-course?courseId=' + courseId)
         setCourseInfo(result.data)
-        console.log(result.data)
-
+       
     }
 
     useEffect(() => {
@@ -31,10 +30,10 @@ const CoursePage = () => {
     }, [])
     return (
         <div>
-<div>
+            <div>
 
-            <AppHeader hideSidebar={true}></AppHeader>
-</div>
+                <AppHeader hideSidebar={true}></AppHeader>
+            </div>
 
             <div className='flex gap-10    '>
 

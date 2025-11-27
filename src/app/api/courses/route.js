@@ -16,7 +16,6 @@ export async function GET(req) {
         const result = await db.select().from(courseTable).where(sql`${courseTable.courseContent}::jsonb !='{}'::jsonb`)
 
 
-        // console.log(result)
         return NextResponse.json(result)
     }
 
@@ -26,15 +25,12 @@ export async function GET(req) {
 
         const result = await db.select().from(courseTable).where(eq(courseTable.cid, courseId))
 
-
-        // console.log(result)
         return NextResponse.json(result[0])
 
     } else {
         const result = await db.select().from(courseTable).where(eq(courseTable.userEmail, user.primaryEmailAddress?.emailAddress)).orderBy(desc(courseTable.id))
 
 
-        // console.log(result)
         return NextResponse.json(result)
 
     }

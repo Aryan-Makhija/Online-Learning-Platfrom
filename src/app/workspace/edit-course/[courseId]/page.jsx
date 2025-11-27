@@ -19,7 +19,7 @@ const EditCoursePage = ({viewCourse = false}) => {
         try {
             const result = await axios.get("/api/courses?courseId=" + courseId)
             setcourse(result.data)
-            console.log(result.data)
+     
 
 
         } catch (err) {

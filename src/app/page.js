@@ -493,9 +493,12 @@ export default function Home() {
           Generate full courses with one click — no hassle, no confusion.
         </p>
 
-        <button className="mt-10 bg-purple-600 hover:bg-purple-700 text-white px-10 py-4 rounded-xl text-xl shadow-lg transition">
-          Get Started — It’s Free
-        </button>
+        <a href="/workspace">
+          <button className="mt-10 bg-purple-600 hover:bg-purple-700 text-white px-10 py-4 rounded-xl text-xl shadow-lg transition">
+            Get Started — It’s Free
+          </button>
+
+        </a>
       </section >
 
       {/* =============== PROFESSIONAL FOOTER =============== */}
@@ -523,7 +526,7 @@ export default function Home() {
           <div>
             <h5 className="font-semibold text-purple-300">Contact</h5>
             <p className="text-gray-400 mt-4">support@eduai.com</p>
-            <p className="text-gray-400 mt-2">+1 (555) 123-4567</p>
+            {/* <p className="text-gray-400 mt-2">+1 (555) 123-4567</p> */}
           </div>
 
         </div>

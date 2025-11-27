@@ -28,11 +28,7 @@ const CourseCard = ({ course }) => {
             }
             toast.success("Enrolled To Course")
             router.push("/workspace/edit-course/" + course?.cid)
-
-
-
-
-
+            
         } catch (err) {
             console.log(err.message)
         } finally {

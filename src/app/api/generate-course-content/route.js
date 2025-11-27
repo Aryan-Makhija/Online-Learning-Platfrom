@@ -111,6 +111,6 @@ const GetYoutubeVideo = async (topic) => {
         }
         youtubeVideoList.push(data)
     })
-    // console.log("youtubevideolist", youtubeVideoList)
+
     return youtubeVideoList
 }
