@@ -40,7 +40,7 @@ const EnrollCourseList = () => {
                 ">
                 {
                     enrollcourse.map((course, index) => (
-                        <EnrollCourseListCard course={course?.courses} enrollcourse={enrollcourse} key={index}></EnrollCourseListCard>
+                        <EnrollCourseListCard course={course?.courses} enrollcourse={course?.enrollCourse} key={index}></EnrollCourseListCard>
                     ))
                 }
 

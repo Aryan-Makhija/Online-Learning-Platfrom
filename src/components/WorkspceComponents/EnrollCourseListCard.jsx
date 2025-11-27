@@ -7,9 +7,13 @@ import Link from 'next/link'
 const EnrollCourseListCard = ({ course, enrollcourse }) => {
 
     const CalculateProgress = () => {
-        return (enrollcourse?.enrollCourse?.completedChapters?.length ?? 0 / course?.courseContent.length) * 100
+        return Math.round(
+            (enrollcourse?.completedChapters?.length / course?.courseContent?.length) * 100)
     }
 
+
+    console.log("enrollcourse", enrollcourse)
+    console.log("course", course)
 
     const courseJson = course?.courseJson?.course
     return (
@@ -18,7 +22,7 @@ const EnrollCourseListCard = ({ course, enrollcourse }) => {
             <div className='p-3 flex flex-col gap-3'>
                 <h2 className='font-bold text-lg'>{courseJson?.name}</h2>
                 <p className='line-clamp-3 text-gray-400 '>{courseJson?.description}</p>
-                <p className='flex justify-between item-center text-purple-600'>Progress<span></span>{CalculateProgress()}%</p>
+                <p className='flex justify-between item-center text-purple-600'>Progress<span>{CalculateProgress()}%</span></p>
                 <Progress value={CalculateProgress()}></Progress>
                 <div className='flex flex-col  gap-4  '>
                     <h2 className="flex gap-2"><Book></Book>{courseJson?.noOfChapters} Chapters </h2>

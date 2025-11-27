@@ -61,7 +61,7 @@ const AddnewCourse = ({ children }) => {
             })
 
            
-            router.push('/workspace/edit-course',response.data?.courseId)
+            router.push('/workspace/edit-course/',response.data?.cid)
         } catch (err) {
             console.log(err.message)
         } finally {
