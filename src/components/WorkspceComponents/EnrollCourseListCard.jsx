@@ -12,8 +12,7 @@ const EnrollCourseListCard = ({ course, enrollcourse }) => {
     }
 
 
-    console.log("enrollcourse", enrollcourse)
-    console.log("course", course)
+
 
     const courseJson = course?.courseJson?.course
     return (
