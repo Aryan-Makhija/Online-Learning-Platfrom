@@ -13,6 +13,8 @@ const ExploreCourse = () => {
 
     const [courselist, setcourselist] = useState([])
 
+    const [search, setsearch] = useState({ name: "" })
+    const [error, seterror] = useState("")
     const { user } = useUser()
 
     const GetCoursesList = async () => {
@@ -24,15 +26,46 @@ const ExploreCourse = () => {
         user && GetCoursesList()
     }, [user])
 
-    
+
+
+
+    const explore = async () => {
+
+        try {
+
+            if (search.name === "") {
+                seterror("Please Write the Course name!")
+                return;
+            }
+            const response = await axios.post("/api/courses/searchcourse", search)
+            setcourselist(response.data)
+            seterror("")
+
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+
+
+
+
     return (
         <div>
 
             <h2 className='font-bold text-3xl mb-6'>Explore More</h2>
 
             <div className='flex gap-5 w-1/2'>
-                <Input placeholder="Search"></Input>
-                <Button variant="outline" className="bg-blue-500 text-white hover:bg-white hover:text-blue-500 hover:outline-1">Search</Button>
+
+            <div className='flex flex-col gap-2 w-full'>
+                <Input
+                    placeholder="Search Course"
+                    value={search.name}
+                    onChange={(e) => setsearch({ ...search, name: e.target.value })}
+                />
+                <p className='text-m text-red-500'>{error}</p>
+
+            </div>
+                <Button variant="outline" className="bg-blue-500 text-white hover:bg-white hover:text-blue-500 hover:outline-1" onClick={explore}>Search</Button>
             </div>
 
             <div className="mt-6 

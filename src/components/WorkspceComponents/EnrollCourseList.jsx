@@ -8,8 +8,6 @@ const EnrollCourseList = () => {
 
     const [enrollcourse, setenrollcourse] = useState()
 
-
-    console.log("enrollCourse", enrollcourse)
     const getEnrollCourse = async () => {
         try {
             const response = await axios.get("/api/enroll-course")
