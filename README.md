@@ -1,12 +1,16 @@
-.
 
-📚 EduAI – AI-Powered Online Learning Platform
+<h1 style="font-size: 45px; font-weight: bold;">
+  📚 EduAI – AI-Powered Online Learning Platform
+</h1>
 
 EduAI is an AI-driven online learning platform that allows users to instantly generate personalized courses based on any topic they want to learn. Users simply enter the course topic, choose the number of chapters, select whether to include YouTube videos, and click Generate—EduAI handles the rest.
 
 The platform automatically creates structured, chapter-wise content using AI (Google Gemini) and attaches relevant YouTube videos for each chapter. Users can track their learning progress, mark chapters as complete, and start learning within minutes.
 
+
+
 🚀 Features
+
 ✨ AI-Generated Courses
 
 Enter a topic of your choice.
