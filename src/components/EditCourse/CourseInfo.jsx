@@ -88,7 +88,7 @@ const CourseInfo = ({ course, viewCourse }) => {
 
 
             </div>
-            <div className='w-full h-[240px] rounded-xl bg-gradient-to-br from-blue-700 via-blue-200 to-blue-500 text-white border-purple-500 border-1   text-shadow-blue-500 text-2xl  flex justify-center items-center '>{course?.name}</div>
+            <div className='w-full h-[240px] rounded-xl bg-gradient-to-br from-blue-700 via-blue-200 to-purple-500 text-white border-purple-500 border-1   text-shadow-blue-500 text-2xl  flex justify-center items-center '>{course?.name}</div>
 
 
 

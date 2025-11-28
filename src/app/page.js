@@ -17,7 +17,11 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             className="text-3xl font-bold text-purple-600"
           >
-            EduAI
+            <div className="flex gap-2 justify-center items-center">
+              {/* <Image src="/logo3.jpeg" width={80} height={20} alt="logo"></Image> */}
+              EduAI
+
+            </div>
           </motion.h1>
 
           <nav className="hidden md:flex gap-8 text-m font-medium">
@@ -99,7 +103,7 @@ export default function Home() {
       </section >
 
       {/* =============== FEATURES SECTION =============== */}
-    
+
 
       <section id="features" className="py-24 bg-purple-50">
         <div className="max-w-7xl mx-auto px-6">
@@ -235,7 +239,7 @@ export default function Home() {
           {/* Course Card */}
           {["Web Development", "AI & Machine Learning", "Data Science"].map((course, i) => (
             <div key={i} className="bg-white shadow rounded-xl overflow-hidden hover:shadow-lg transition">
-              <div className="h-44 bg-purple-200"></div>
+              <div className="h-44 bg-gradient-to-br from-blue-700 via-blue-200 to-purple-500 flex justify-center text-white  text-2xl items-center ">{course}</div>
               <div className="p-6">
                 <h4 className="text-xl font-semibold text-gray-900">{course}</h4>
                 <p className="text-gray-600 mt-3">
