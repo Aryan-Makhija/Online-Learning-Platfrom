@@ -7,218 +7,6 @@ import Link from "next/link";
 export default function Home() {
   return (
 
-    // <div className="min-h-screen bg-white">
-
-    //   {/* ============ HEADER ============ */}
-    //   <header className="w-full py-5 px-6 md:px-16 flex items-center justify-between shadow-sm bg-white sticky top-0 z-50">
-    //     <h1 className="text-2xl font-bold text-purple-600">EduAI</h1>
-
-    //     <nav className="hidden md:flex items-center gap-10 text-gray-700">
-    //       <a href="#features" className="hover:text-purple-600">Features</a>
-    //       <a href="#courses" className="hover:text-purple-600">Courses</a>
-    //       <a href="#testimonials" className="hover:text-purple-600">Testimonials</a>
-    //       <a href="#contact" className="hover:text-purple-600">Contact</a>
-    //     </nav>
-
-    //     {/* <a
-    //         href="/sign-in"
-    //         className="hidden md:block bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg"
-    //       >
-    //         Login
-    //       </a> */}
-
-    //     <SignedOut>
-    //       <a
-    //         href="/sign-in?redirect_url=/workspace"
-    //         className="hidden md:block bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg"
-    //       >
-    //         Login
-    //       </a>
-    //     </SignedOut>
-
-    //     {/* When user is logged IN */}
-    //     <SignedIn>
-    //       <UserButton
-    //         appearance={{
-    //           elements: {
-    //             avatarBox: "w-10 h-10",
-    //           },
-    //         }}
-    //         afterSignOutUrl="/"
-    //       />
-    //     </SignedIn>
-
-
-    //     {/* Mobile menu icon */}
-    //     <div className="md:hidden text-purple-600 text-3xl">
-    //       ☰
-    //     </div>
-    //   </header>
-
-    //   {/* ============ HERO SECTION ============ */}
-    //   <section className="px-6 md:px-20 py-20 flex flex-col md:flex-row items-center justify-between">
-
-    //     {/* Left */}
-    //     <div className="flex-1">
-    //       <h2 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
-    //         Learn Smarter with <span className="text-purple-600">AI-Powered</span> Education
-    //       </h2>
-
-    //       <p className="text-gray-600 mt-5 text-lg md:text-xl">
-    //         Unlock knowledge anytime, anywhere. Personalised learning paths, AI-generated quizzes,
-    //         and expert-led courses to help you grow faster.
-    //       </p>
-
-    //       <div className="mt-8 flex gap-4">
-    //         <a
-    //           href="/workspace"
-    //           className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg text-lg"
-    //         >
-    //           Get Started
-    //         </a>
-
-    //         <a
-    //           href="#courses"
-    //           className="border-2 border-purple-600 text-purple-600 hover:bg-purple-50 px-6 py-3 rounded-lg text-lg"
-    //         >
-    //           Browse Courses
-    //         </a>
-    //       </div>
-    //     </div>
-
-    //     {/* Right */}
-    //     <div className="flex-1 mt-10 md:mt-0">
-    //       <img
-    //         src="/hero-illustration.png"
-    //         alt="Learning"
-    //         className="w-full"
-    //       />
-    //     </div>
-    //   </section>
-
-    //   {/* ============ FEATURES SECTION ============ */}
-    //   <section id="features" className="px-6 md:px-20 py-20 bg-purple-50">
-    //     <h3 className="text-center text-3xl md:text-4xl font-bold text-gray-900">
-    //       Platform <span className="text-purple-600">Features</span>
-    //     </h3>
-
-    //     <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-10">
-    //       {/* Feature */}
-    //       <div className="p-8 bg-white rounded-xl shadow hover:shadow-lg transition">
-    //         <h4 className="text-xl font-semibold text-purple-600">AI-Generated Quizzes</h4>
-    //         <p className="text-gray-600 mt-3">Automatically generated quizzes based on your progress.</p>
-    //       </div>
-
-    //       <div className="p-8 bg-white rounded-xl shadow hover:shadow-lg transition">
-    //         <h4 className="text-xl font-semibold text-purple-600">Personalised Learning</h4>
-    //         <p className="text-gray-600 mt-3">AI recommends lessons based on your performance.</p>
-    //       </div>
-
-    //       <div className="p-8 bg-white rounded-xl shadow hover:shadow-lg transition">
-    //         <h4 className="text-xl font-semibold text-purple-600">Expert Tutors</h4>
-    //         <p className="text-gray-600 mt-3">Learn from industry professionals.</p>
-    //       </div>
-    //     </div>
-    //   </section>
-
-    //   {/* ============ COURSES SECTION ============ */}
-    //   <section id="courses" className="px-6 md:px-20 py-20">
-    //     <h3 className="text-center text-3xl md:text-4xl font-bold text-gray-900">
-    //       Popular <span className="text-purple-600">Courses</span>
-    //     </h3>
-
-    //     <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-
-    //       {/* Course Card */}
-    //       {["Web Development", "AI & Machine Learning", "Data Science"].map((course, i) => (
-    //         <div key={i} className="bg-white shadow rounded-xl overflow-hidden hover:shadow-lg transition">
-    //           <div className="h-44 bg-purple-200"></div>
-    //           <div className="p-6">
-    //             <h4 className="text-xl font-semibold text-gray-900">{course}</h4>
-    //             <p className="text-gray-600 mt-3">
-    //               Learn {course} with step-by-step guided lessons.
-    //             </p>
-    //             <a
-    //               href="/courses"
-    //               className="text-purple-600 font-semibold mt-4 block hover:underline"
-    //             >
-    //               View Course →
-    //             </a>
-    //           </div>
-    //         </div>
-    //       ))}
-
-    //     </div>
-    //   </section>
-
-    //   {/* ============ TESTIMONIALS SECTION ============ */}
-    //   <section id="testimonials" className="px-6 md:px-20 py-20 bg-purple-50">
-    //     <h3 className="text-center text-3xl md:text-4xl font-bold text-gray-900">
-    //       Student <span className="text-purple-600">Testimonials</span>
-    //     </h3>
-
-    //     <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-
-    //       {[1, 2, 3].map((t) => (
-    //         <div key={t} className="bg-white p-8 rounded-xl shadow hover:shadow-lg transition">
-    //           <p className="text-gray-600">“This platform helped me learn faster with AI-based suggestions!”</p>
-    //           <h4 className="mt-4 font-semibold text-gray-900">Student {t}</h4>
-    //         </div>
-    //       ))}
-
-    //     </div>
-    //   </section>
-
-    //   {/* ============ CTA SECTION ============ */}
-    //   <section className="px-6 md:px-20 py-20 text-center">
-    //     <h3 className="text-4xl font-bold text-gray-900">
-    //       Start Learning with <span className="text-purple-600">AI Today</span>
-    //     </h3>
-    //     <p className="text-gray-600 mt-3 text-lg">
-    //       Join thousands of learners upgrading their skills.
-    //     </p>
-
-    //     <a
-    //       href="/signup"
-    //       className="inline-block mt-8 bg-purple-600 text-white px-10 py-4 rounded-lg text-xl hover:bg-purple-700"
-    //     >
-    //       Get Started
-    //     </a>
-    //   </section>
-
-    //   {/* ============ FOOTER ============ */}
-    //   <footer id="contact" className="bg-gray-900 text-white py-10 px-6 md:px-20">
-    //     <div className="flex flex-col md:flex-row justify-between gap-6">
-
-    //       <div>
-    //         <h4 className="text-xl font-bold text-purple-400">EduAI</h4>
-    //         <p className="text-gray-400 mt-3">AI-powered online learning made simple.</p>
-    //       </div>
-
-    //       <div>
-    //         <h5 className="font-semibold text-purple-300">Quick Links</h5>
-    //         <ul className="mt-3 space-y-2 text-gray-400">
-    //           <li><a href="#" className="hover:text-purple-400">About Us</a></li>
-    //           <li><a href="#" className="hover:text-purple-400">Courses</a></li>
-    //           <li><a href="#" className="hover:text-purple-400">Support</a></li>
-    //         </ul>
-    //       </div>
-
-    //       <div>
-    //         <h5 className="font-semibold text-purple-300">Contact</h5>
-    //         <p className="text-gray-400 mt-3">support@eduai.com</p>
-    //       </div>
-
-    //     </div>
-
-    //     <p className="text-center text-gray-500 mt-10 text-sm">
-    //       © 2025 EduAI — All rights reserved.
-    //     </p>
-    //   </footer>
-
-    // </div>
-
-
     <div className="bg-white text-gray-900 min-h-screen font-sans">
 
       {/* =============== HEADER =============== */}
@@ -238,14 +26,7 @@ export default function Home() {
             <a href="#testimonials" className="hover:text-purple-600 transition">Testimonials</a>
             <a href="#contact" className="hover:text-purple-600 transition">Contact</a>
           </nav>
-          {/* 
-          <a h href="/sign-in?redirect_url=/workspace">
 
-            <button className="bg-purple-600 hover:bg-purple-700 text-white px-5 py-2 rounded-lg shadow">
-              Login
-            </button>
-
-          </a> */}
 
           <SignedOut>
             <a
@@ -315,48 +96,48 @@ export default function Home() {
           </a>
         </motion.div>
 
-        {/* Animated AI Circle */}
-        {/* <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-          className="mt-16 mx-auto w-64 h-64 border-4 border-purple-200 rounded-full flex items-center justify-center"
-        >
-          <div className="w-40 h-40 bg-purple-300/30 blur-xl rounded-full" />
-        </motion.div> */}
       </section >
 
       {/* =============== FEATURES SECTION =============== */}
-      < section id="features" className="py-24 bg-purple-50" >
+    
+
+      <section id="features" className="py-24 bg-purple-50">
         <div className="max-w-7xl mx-auto px-6">
-          <h3 className="text-4xl font-bold text-center text-purple-700 mb-14">
-            Powerful Features
+          <h3 className="text-5xl font-extrabold text-center text-purple-700 mb-16 tracking-tight">
+            ✨ <span className="italic">Powerful, Intelligent</span> Features
           </h3>
 
-          <div className="grid md:grid-cols-3 gap-10">
+          <div className="grid md:grid-cols-3 gap-12">
             {[
               {
+                icon: "🤖",
                 title: "AI-Generated Courses",
-                text: "Enter a topic—EduAI builds your full course structure instantly."
+                text: "Simply enter a topic — the AI instantly builds a full structured course for you."
               },
               {
+                icon: "🎥",
                 title: "YouTube Integration",
-                text: "Relevant videos automatically added to each chapter."
+                text: "Automatically fetches high-quality, relevant videos for every chapter."
               },
               {
+                icon: "📊",
                 title: "Progress Tracking",
-                text: "Track your learning progress chapter by chapter."
+                text: "Beautiful UI lets you track your learning journey chapter by chapter."
               },
               {
+                icon: "🧠",
                 title: "Smart Topic Breakdown",
-                text: "Each chapter contains digestible, easy-to-learn topics."
+                text: "EduAI intelligently breaks down complex topics into digestible, easy lessons."
               },
               {
+                icon: "⚙️",
                 title: "Custom Chapter Count",
-                text: "Choose how many chapters you want—AI handles the rest."
+                text: "Choose how many chapters you want — the AI handles everything else elegantly."
               },
               {
+                icon: "📚",
                 title: "All in One Place",
-                text: "No researching. No confusion. Your entire roadmap ready."
+                text: "Your *complete* learning roadmap with videos, content, and progress in one clean space."
               }
             ].map((f, i) => (
               <motion.div
@@ -365,15 +146,40 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white border border-purple-200 p-6 rounded-xl shadow-sm hover:shadow-md hover:scale-105 transition"
+                className="
+            bg-white backdrop-blur-xl
+            border border-purple-200
+            p-8 rounded-2xl
+            shadow-[0_4px_20px_rgba(125,85,210,0.15)]
+            hover:shadow-[0_8px_35px_rgba(125,85,210,0.25)]
+            hover:-translate-y-2
+            hover:border-purple-300
+            transition-all duration-300
+            relative overflow-hidden
+          "
               >
-                <h4 className="text-2xl font-semibold text-purple-700">{f.title}</h4>
-                <p className="text-gray-600 mt-3">{f.text}</p>
+                {/* Gradient glow top border */}
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-400 to-pink-400 opacity-70"></div>
+
+                {/* Icon */}
+                <div className="text-5xl mb-5 drop-shadow-md">{f.icon}</div>
+
+                <h4 className="text-2xl font-bold text-purple-700 leading-tight">
+                  {f.title}
+                </h4>
+
+                <p className="text-gray-600 mt-4 leading-relaxed">
+                  {f.text}
+                </p>
+
+                {/* AI Glow Orb */}
+                <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-purple-300 rounded-full opacity-20 blur-3xl"></div>
               </motion.div>
             ))}
           </div>
         </div>
-      </section >
+      </section>
+
 
       {/* =============== HOW IT WORKS SECTION =============== */}
       < section id="how" className="py-24 px-6 max-w-7xl mx-auto" >
