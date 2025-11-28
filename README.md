@@ -1,4 +1,4 @@
-.
+
 
 📚 EduAI – AI-Powered Online Learning Platform
 
