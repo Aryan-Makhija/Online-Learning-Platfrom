@@ -7,13 +7,16 @@ import EnrollCourseListCard from './EnrollCourseListCard'
 const EnrollCourseList = () => {
 
     const [enrollcourse, setenrollcourse] = useState()
+
+
+    console.log("enrollCourse", enrollcourse)
     const getEnrollCourse = async () => {
         try {
             const response = await axios.get("/api/enroll-course")
 
 
             setenrollcourse(response.data)
-     
+
         } catch (err) {
             console.log(err.message)
         }

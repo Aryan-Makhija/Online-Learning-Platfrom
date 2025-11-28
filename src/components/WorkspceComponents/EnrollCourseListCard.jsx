@@ -1,10 +1,11 @@
 import { Book, PlayCircle, Settings } from 'lucide-react'
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from '../ui/button'
 import { Progress } from '../ui/progress'
 import Link from 'next/link'
 
 const EnrollCourseListCard = ({ course, enrollcourse }) => {
+
 
     const CalculateProgress = () => {
         return Math.round(
@@ -15,9 +16,10 @@ const EnrollCourseListCard = ({ course, enrollcourse }) => {
 
 
     const courseJson = course?.courseJson?.course
+
     return (
         <div className='shadow-lg  rounded-xl '>
-            <div className='w-full h-[180px] rounded-t-xl border-purple-500 border-1'></div>
+            <div className='w-full h-[180px] rounded-t-xl bg-gradient-to-br from-blue-700 via-blue-200 to-blue-500 text-white border-purple-500 border-1   text-shadow-blue-500 text-2xl  flex justify-center items-center '>{course?.name}</div>
             <div className='p-3 flex flex-col gap-3'>
                 <h2 className='font-bold text-lg'>{courseJson?.name}</h2>
                 <p className='line-clamp-3 text-gray-400 '>{courseJson?.description}</p>
