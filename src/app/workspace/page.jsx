@@ -8,7 +8,10 @@ const WorkSpace = () => {
         <div>
             <WelcomeBanner></WelcomeBanner>
             <EnrollCourseList></EnrollCourseList>
+            <div className='w-full'>
             <CourseList></CourseList>
+
+            </div>
         </div>
     )
 }

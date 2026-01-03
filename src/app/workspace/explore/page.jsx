@@ -21,7 +21,6 @@ const ExploreCourse = () => {
         const response = await axios.get("/api/courses?courseId=0")
         setcourselist(response.data)
     }
-
     useEffect(() => {
         user && GetCoursesList()
     }, [user])
@@ -56,15 +55,15 @@ const ExploreCourse = () => {
 
             <div className='flex gap-5 w-1/2'>
 
-            <div className='flex flex-col gap-2 w-full'>
-                <Input
-                    placeholder="Search Course"
-                    value={search.name}
-                    onChange={(e) => setsearch({ ...search, name: e.target.value })}
-                />
-                <p className='text-m text-red-500'>{error}</p>
+                <div className='flex flex-col gap-2 w-full'>
+                    <Input
+                        placeholder="Search Course"
+                        value={search.name}
+                        onChange={(e) => setsearch({ ...search, name: e.target.value })}
+                    />
+                    <p className='text-m text-red-500'>{error}</p>
 
-            </div>
+                </div>
                 <Button variant="outline" className="bg-blue-500 text-white hover:bg-white hover:text-blue-500 hover:outline-1" onClick={explore}>Search</Button>
             </div>
 
