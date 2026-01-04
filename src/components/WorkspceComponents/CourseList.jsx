@@ -27,26 +27,28 @@ const CourseList = () => {
 
 
     return (
-        <div className='mt-10'>
+
+        <section  id="course" className="scroll-mt-24" >
+            <div className='mt-10'>
 
 
-            <h2 className='font-bold text-3xl'>Course List</h2>
+                <h2 className='font-bold text-3xl'>Course List</h2>
 
 
-            {
-                courselist.length === 0 ?
+                {
+                    courselist.length === 0 ?
 
-                    <div className='w-full mt-5 p-10 bg-secondary rounded-xl  flex justify-center flex-col  gap-3 items-center '>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCkcBAxdZSJipsWclnHvnKBALDx_M2im_9vA&s" alt="education" width={120} height={120} />
-                        <h2 className='font-bold text-xl '>Look like you have not created any courses yet</h2>
+                        <div className='w-full mt-5 p-10 bg-secondary rounded-xl  flex justify-center flex-col  gap-3 items-center '>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCkcBAxdZSJipsWclnHvnKBALDx_M2im_9vA&s" alt="education" width={120} height={120} />
+                            <h2 className='font-bold text-xl '>Look like you have not created any courses yet</h2>
 
-                        <AddnewCourse>
-                            <Button className="bg-purple-500 text-white">
-                                + Create your first course
-                            </Button>
-                        </AddnewCourse>
-                    </div> :
-                    <div className="mt-6 
+                            <AddnewCourse>
+                                <Button className="bg-purple-500 text-white">
+                                    + Create your first course
+                                </Button>
+                            </AddnewCourse>
+                        </div> :
+                        <div className="mt-6 
                 grid 
                 grid-cols-1 
                 sm:grid-cols-2 
@@ -54,17 +56,19 @@ const CourseList = () => {
                 lg:grid-cols-3 
                 xl:grid-cols-4 
                 gap-6     ">
-                        {
-                            courselist.map((course, index) => (
-                                <CourseCard course={course} key={index}></CourseCard>
-                            ))
-                        }
+                            {
+                                courselist.map((course, index) => (
+                                    <CourseCard course={course} key={index}></CourseCard>
+                                ))
+                            }
 
-                    </div>
+                        </div>
 
 
-            }
-        </div>
+                }
+            </div>
+
+        </section>
     )
 }
 

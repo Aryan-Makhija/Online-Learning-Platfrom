@@ -19,7 +19,7 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { Button } from '../ui/button'
-import { Loader2Icon, Sparkle, Star } from 'lucide-react'
+import { Loader2Icon, Sparkle, Star, StarIcon } from 'lucide-react'
 import axios from 'axios'
 import { v4 as uuidv4 } from 'uuid';
 import { useRouter } from 'next/navigation'
@@ -45,7 +45,7 @@ const AddnewCourse = ({ children }) => {
             ...prev,
             [field]: value
         }))
-  
+
     }
 
 
@@ -60,8 +60,8 @@ const AddnewCourse = ({ children }) => {
                 courseId: courseId
             })
 
-           
-            router.push('/workspace/edit-course/',response.data?.cid)
+
+            router.push('/workspace/edit-course/', response.data?.cid)
         } catch (err) {
             console.log(err.message)
         } finally {
@@ -76,7 +76,7 @@ const AddnewCourse = ({ children }) => {
             <DialogTrigger asChild >{children}</DialogTrigger>
             <DialogContent>
                 <DialogHeader>
-                    <DialogTitle>Create New Course Using AI</DialogTitle>
+                    <DialogTitle className="font-bold text-xl">Create New Course Using AI 🤖 </DialogTitle>
                     <DialogDescription asChild>
                         <div className="flex flex-col gap-4 mt-3">
                             <div>

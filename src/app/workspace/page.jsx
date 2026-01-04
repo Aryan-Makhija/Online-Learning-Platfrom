@@ -5,8 +5,12 @@ import React from 'react'
 
 const WorkSpace = () => {
     return (
-        <div>
+        <div className='flex flex-col gap-10'>
+
+         
+
             <WelcomeBanner></WelcomeBanner>
+          
             <EnrollCourseList></EnrollCourseList>
             <div className='w-full'>
             <CourseList></CourseList>
