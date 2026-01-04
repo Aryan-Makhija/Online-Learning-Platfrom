@@ -29,7 +29,7 @@ const EnrollCourseListCard = ({ course, enrollcourse }) => {
             {/* Header */}
             <div className="
     h-48
-    bg-gradient-to-br from-blue-700 via-blue-200 to-purple-500 
+    bg-gradient-to-br from-blue-700 via-blue-200 to-indigo-500 
     text-white
     flex items-center justify-center
     text-center
@@ -66,8 +66,8 @@ const EnrollCourseListCard = ({ course, enrollcourse }) => {
 
                 {/* Footer */}
                 <div className="mt-auto flex flex-col gap-4">
-                    <div className="flex items-center gap-2 text-gray-600 font-medium">
-                        <Book className="text-purple-600" />
+                    <div className="flex items-center gap-2 text-blue-900 font-medium">
+                        <Book className="text-indigo-600" />
                         {courseJson?.noOfChapters} Chapters
                     </div>
 
@@ -75,7 +75,7 @@ const EnrollCourseListCard = ({ course, enrollcourse }) => {
                         <Button
                             className="
             w-full py-3 rounded-xl
-            bg-purple-600 text-white
+            bg-indigo-600 text-white
             flex items-center justify-center gap-2
             hover:scale-[1.03]
             transition-transform

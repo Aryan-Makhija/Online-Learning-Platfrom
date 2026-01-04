@@ -1,10 +1,14 @@
+"use client"
+
 import { Gift } from 'lucide-react'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const ChapterTopicList = ({ course }) => {
 
     const courselayout = course?.courseJson?.course
-
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    }, []);
     return (
         <div className='mt-10 flex flex-col gap-5 justify-center items-center'>
 
@@ -16,7 +20,7 @@ const ChapterTopicList = ({ course }) => {
                 {
                     courselayout?.chapters.map((chapter, index) => (
                         <div key={index} className='flex flex-col items-center'>
-                            <div className='p-4 border shadow  rounded-xl bg-purple-600 text-white'>
+                            <div className='p-4 border shadow  rounded-xl bg-indigo-500 text-white'>
                                 <h2 className='text-center'>Chapter {index + 1}</h2>
                                 <h2 className='font-bold text-lg text-center'>{chapter.chapterName}</h2>
                                 <h2 className='text-xs flex justify-between gap-16 '><span>Duration:{chapter?.duration}</span><span>No.Of Chapters:{chapter?.topics?.length}</span></h2>

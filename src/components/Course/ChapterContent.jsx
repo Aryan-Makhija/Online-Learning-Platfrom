@@ -92,74 +92,9 @@ const ChapterContent = () => {
 
 
   return (
-    // <ScrollArea>
-
-    //   <div className='p-10 flex flex-col   w-full border-2'>
-
-    //     <div className="flex items-center justify-between">
-    //       <h2 className="font-bold text-3xl">{chapterindex + 1}. {course?.[chapterindex]?.courseData?.chapterName}</h2>
-
-    //       {!completedchapters?.includes(chapterindex) ?
-
-    //         <Button disabled={loader} onClick={() => markChapterCompleted()} className="bg-purple-600 text-white cursor-pointer">
-
-    //           {loader ? <Loader2Icon className="animate-spin"></Loader2Icon> : <CheckCircle></CheckCircle>}
-
-    //           Mark As Complete</Button> :
-
-    //         <Button disabled={loader} onClick={markChapterInCompleted} variant="outline">
-
-    //           {loader ? <Loader2Icon className="animate-spin"></Loader2Icon> : <X></X>}
-    //           Mark as Incomplete</Button>}
-
-
-    //     </div>
-
-
-    //     <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-5 mt-7">
-    //       {videodata?.map((video, index) => index < 2 && (
-
-    //         <div key={index}>
-    //           <YouTube videoId={video?.videoId} opts={{
-    //             height: '250',
-    //             width: '400',
-    //             borderRadius: 15
-    //           }}>
-
-    //           </YouTube>
-
-    //         </div>
-    //       ))}
-
-    //     </div>
-    //     <div className='mt-7 w-full'>
-    //       {topics?.map((topic, index) => (
-    //         <div key={index} className="mt-10 p-5 bg-secondary rounded-2xl">
-
-
-
-    //           <h2 className="font-bold text-xl text-purple-600">{index + 1}. {topic?.topic}</h2>
-    //           <div dangerouslySetInnerHTML={{ __html: topic?.content }}
-    //             style={{
-    //               lineHeight: '2.5'
-    //             }}
-    //           >
-
-    //           </div>
-
-
-    //         </div>
-    //       ))}
-
-    //     </div>
-
-    //   </div>
-
-    // </ScrollArea>
-
 
     <ScrollArea>
-      <div className="p-5 md:p-10 flex flex-col w-full border-2 box-border">
+      <div className="p-5 md:p-10 flex flex-col w-full ">
 
         {/* Header */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-0">
@@ -172,7 +107,7 @@ const ChapterContent = () => {
               <Button
                 disabled={loader}
                 onClick={() => markChapterCompleted()}
-                className="bg-purple-600 text-white cursor-pointer flex items-center gap-2"
+                className="bg-indigo-600 text-white cursor-pointer flex items-center gap-2"
               >
                 {loader ? <Loader2Icon className="animate-spin" /> : <CheckCircle />}
                 Mark As Complete
@@ -234,7 +169,7 @@ const ChapterContent = () => {
               key={index}
               className="p-5 bg-secondary rounded-2xl w-full break-words"
             >
-              <h2 className="font-bold text-xl text-purple-600 mb-3">
+              <h2 className="font-bold text-xl text-indigo-600 mb-3">
                 {index + 1}. {topic?.topic}
               </h2>
 

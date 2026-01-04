@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input'
 import CourseCard from '@/components/WorkspceComponents/CourseCard'
 import { useUser } from '@clerk/nextjs'
 import axios from 'axios'
+import { Loader } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 
 const ExploreCourse = () => {
@@ -26,29 +27,9 @@ const ExploreCourse = () => {
     }, [user])
 
 
-
-
-    // const explore = async () => {
-
-    //     try {
-
-    //         if (search.name === "") {
-    //             seterror("Please Write the Course name!")
-    //             return;
-    //         }
-    //         const response = await axios.post("/api/courses/searchcourse", search)
-    //         setcourselist(response.data)
-    //         seterror("")
-
-    //     } catch (err) {
-    //         console.log(err.message)
-    //     }
-    // }
     useEffect(() => {
         if (search.name === "") {
             seterror("");
-            // setcourselist([]); // optional: clear results if input is empty
-     
             return;
         }
 
@@ -68,7 +49,7 @@ const ExploreCourse = () => {
             const response = await axios.post("/api/courses/searchcourse", search);
             setcourselist(response.data);
             seterror(response.data.length === 0 ? "No courses found" : "");
-           
+
         } catch (err) {
             console.log(err.message);
             seterror("Something went wrong while searching!");
@@ -114,7 +95,10 @@ const ExploreCourse = () => {
                 </Button>
             </div>
 
-            <div className="mt-6 
+
+            {
+                courselist.length === 0 ? <div className="w-full flex items-center mt-20 h-20 justify-center"><Loader className='w-15 h-15 animate-spin'></Loader></div> : 
+                <div className="mt-6 
                 grid 
                 grid-cols-1 
                 sm:grid-cols-2 
@@ -123,13 +107,15 @@ const ExploreCourse = () => {
                 xl:grid-cols-4 
                 gap-6
                 ">
-                {
-                    courselist.map((course, index) => (
-                        <CourseCard course={course} key={index}></CourseCard>
-                    ))
-                }
+                    {
+                        courselist.map((course, index) => (
+                            <CourseCard course={course} key={index}></CourseCard>
+                        ))
+                    }
 
-            </div>
+                </div>
+            }
+
         </div>
     )
 }

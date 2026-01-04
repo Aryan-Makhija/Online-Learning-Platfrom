@@ -47,7 +47,7 @@ const CourseCard = ({ course }) => {
             className="shadow-xl rounded-2xl w-full max-w-md md:max-w-md lg:max-w-lg mx-auto hover:shadow-2xl transition-shadow duration-300 flex flex-col bg-white overflow-hidden"
         >
             {/* Course Header */}
-            <div className="h-48 rounded-t-2xl bg-gradient-to-br from-blue-700 via-blue-200 to-purple-500 text-white flex items-center justify-center px-4 text-center text-xl md:text-2xl font-bold drop-shadow-md">
+            <div className="h-48 rounded-t-2xl bg-gradient-to-br from-blue-700 via-blue-200 to-indigo-500 text-white flex items-center justify-center px-4 text-center text-xl md:text-2xl font-bold drop-shadow-md">
                 {course?.name}
             </div>
 
@@ -78,7 +78,7 @@ const CourseCard = ({ course }) => {
                     {course?.courseContent?.length ? (
                         <Button
                             onClick={() => onEnrollCourse()}
-                            className="bg-purple-600 text-white w-full py-3 rounded-xl hover:scale-105 transform transition-all duration-200 flex items-center justify-center gap-2 text-sm md:text-base"
+                            className="bg-indigo-600 text-white w-full py-3 rounded-xl hover:scale-105 transform transition-all duration-200 flex items-center justify-center gap-2 text-sm md:text-base"
                         >
                             <PlayCircle />
                             Start Learning

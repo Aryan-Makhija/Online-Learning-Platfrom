@@ -55,7 +55,7 @@ const WelcomeBanner = () => {
           transition={{ delay: 0.3 }}
           className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-4"
         >
-          Welcome to <span className="text-indigo-600">EduAI</span>
+          Welcome to Edu<span className="text-indigo-600">AI</span>
         </motion.h1>
 
         {/* Description */}

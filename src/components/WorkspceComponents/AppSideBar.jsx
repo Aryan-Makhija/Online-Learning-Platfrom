@@ -48,7 +48,8 @@ const AppSideBar = () => {
 
         <Sidebar>
             <SidebarHeader >
-                <Link href="/"><div className='flex gap-2 font-bold items-center text-2xl'><Image src={"/logoimg.jpg"} width={40} height={40} alt="logo"></Image>EduAI</div></Link>
+                <Link href="/"><div className='flex gap-2 font-bold items-center text-2xl'><Image src={"/newlogo.png"} width={60} height={60} alt="logo"></Image>
+                <p>Edu<span className="text-indigo-600">AI</span></p></div></Link>
 
             </SidebarHeader>
             <SidebarContent>
@@ -78,7 +79,7 @@ const AppSideBar = () => {
                                         <SidebarMenuButton asChild className="p-5">
                                             <Link
                                                 href={item.path}
-                                                className={`text-[17px] ${path === item.path ? "text-purple-600 bg-purple-200" : ""
+                                                className={`text-[17px] ${path === item.path ? "text-indigo-600 bg-indigo-200" : ""
                                                     }`}
                                             >
                                                 <item.icon className="h-7 w-7" />

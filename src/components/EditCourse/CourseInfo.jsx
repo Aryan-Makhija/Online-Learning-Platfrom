@@ -81,14 +81,14 @@ const CourseInfo = ({ course, viewCourse }) => {
                         {
                             loading ? <Loader2Icon className="animate-spin"></Loader2Icon> : <Settings2></Settings2>
                         }
-                        Generate Course</Button> : <Link href={'/course/' + course?.cid}> <Button className=" w-full bg-purple-600 text-white "><PlayCircle></PlayCircle>  Continue Learning</Button></Link>
+                        Generate Course</Button> : <Link href={'/course/' + course?.cid}> <Button className=" w-full bg-indigo-600 text-white "><PlayCircle></PlayCircle>  Continue Learning</Button></Link>
 
                 }
 
 
 
             </div>
-            <div className='w-full h-[240px] rounded-xl bg-gradient-to-br from-blue-700 via-blue-200 to-purple-500 text-white border-purple-500 border-1   text-shadow-blue-500 text-2xl  flex justify-center items-center '>{course?.name}</div>
+            <div className='w-full h-[240px] rounded-xl bg-gradient-to-br from-blue-700 via-blue-200 to-indigo-500 text-white border-purple-500 border-1   text-shadow-blue-500 text-2xl  flex justify-center items-center '>{course?.name}</div>
 
 
 
