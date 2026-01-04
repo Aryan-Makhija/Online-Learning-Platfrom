@@ -9,6 +9,7 @@ import YouTube from "react-youtube"
 import { Button } from "../ui/button"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
+import { ScrollArea } from "../ui/scroll-area"
 
 const ChapterContent = () => {
 
@@ -91,66 +92,166 @@ const ChapterContent = () => {
 
 
   return (
-    <div className='p-10 flex flex-col max-h-screen overflow-auto'>
+    // <ScrollArea>
 
-      <div className="flex items-center justify-between">
-        <h2 className="font-bold text-3xl">{chapterindex + 1}. {course?.[chapterindex]?.courseData?.chapterName}</h2>
+    //   <div className='p-10 flex flex-col   w-full border-2'>
 
-        {!completedchapters?.includes(chapterindex) ?
+    //     <div className="flex items-center justify-between">
+    //       <h2 className="font-bold text-3xl">{chapterindex + 1}. {course?.[chapterindex]?.courseData?.chapterName}</h2>
 
-          <Button disabled={loader} onClick={() => markChapterCompleted()} className="bg-purple-600 text-white cursor-pointer">
+    //       {!completedchapters?.includes(chapterindex) ?
 
-            {loader ? <Loader2Icon className="animate-spin"></Loader2Icon> : <CheckCircle></CheckCircle>}
+    //         <Button disabled={loader} onClick={() => markChapterCompleted()} className="bg-purple-600 text-white cursor-pointer">
 
-            Mark As Complete</Button> :
+    //           {loader ? <Loader2Icon className="animate-spin"></Loader2Icon> : <CheckCircle></CheckCircle>}
 
-          <Button disabled={loader} onClick={markChapterInCompleted} variant="outline">
+    //           Mark As Complete</Button> :
 
-            {loader ? <Loader2Icon className="animate-spin"></Loader2Icon> : <X></X>}
-            Mark as Incomplete</Button>}
+    //         <Button disabled={loader} onClick={markChapterInCompleted} variant="outline">
+
+    //           {loader ? <Loader2Icon className="animate-spin"></Loader2Icon> : <X></X>}
+    //           Mark as Incomplete</Button>}
 
 
-      </div>
+    //     </div>
 
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-7">
-        {videodata?.map((video, index) => index < 2 && (
+    //     <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-5 mt-7">
+    //       {videodata?.map((video, index) => index < 2 && (
 
-          <div key={index}>
-            <YouTube videoId={video?.videoId} opts={{
-              height: '250',
-              width: '400',
-              borderRadius: 15
-            }}>
+    //         <div key={index}>
+    //           <YouTube videoId={video?.videoId} opts={{
+    //             height: '250',
+    //             width: '400',
+    //             borderRadius: 15
+    //           }}>
 
-            </YouTube>
+    //           </YouTube>
 
+    //         </div>
+    //       ))}
+
+    //     </div>
+    //     <div className='mt-7 w-full'>
+    //       {topics?.map((topic, index) => (
+    //         <div key={index} className="mt-10 p-5 bg-secondary rounded-2xl">
+
+
+
+    //           <h2 className="font-bold text-xl text-purple-600">{index + 1}. {topic?.topic}</h2>
+    //           <div dangerouslySetInnerHTML={{ __html: topic?.content }}
+    //             style={{
+    //               lineHeight: '2.5'
+    //             }}
+    //           >
+
+    //           </div>
+
+
+    //         </div>
+    //       ))}
+
+    //     </div>
+
+    //   </div>
+
+    // </ScrollArea>
+
+
+    <ScrollArea>
+      <div className="p-5 md:p-10 flex flex-col w-full border-2 box-border">
+
+        {/* Header */}
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-0">
+          <h2 className="font-bold text-2xl md:text-3xl">
+            {chapterindex + 1}. {course?.[chapterindex]?.courseData?.chapterName}
+          </h2>
+
+          <div className="flex gap-3">
+            {!completedchapters?.includes(chapterindex) ? (
+              <Button
+                disabled={loader}
+                onClick={() => markChapterCompleted()}
+                className="bg-purple-600 text-white cursor-pointer flex items-center gap-2"
+              >
+                {loader ? <Loader2Icon className="animate-spin" /> : <CheckCircle />}
+                Mark As Complete
+              </Button>
+            ) : (
+              <Button
+                disabled={loader}
+                onClick={markChapterInCompleted}
+                variant="outline"
+                className="flex items-center gap-2"
+              >
+                {loader ? <Loader2Icon className="animate-spin" /> : <X />}
+                Mark as Incomplete
+              </Button>
+            )}
           </div>
-        ))}
+        </div>
 
-      </div>
-      <div className='mt-7 w-200'>
-        {topics?.map((topic, index) => (
-          <div key={index} className="mt-10 p-5 bg-secondary rounded-2xl">
+        {/* Videos */}
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-3 mt-7">
+          {videodata?.map(
+            (video, index) =>
+              index < 2 && (
+                <div key={index} className="w-full">
+                  <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
+                    <YouTube
+                      videoId={video?.videoId}
+                      opts={{
+                        width: '420',
+                        height: '230',
+                        playerVars: { modestbranding: 1 },
+                      }}
+                      className="absolute top-0 left-0 w-full h-full rounded-lg"
+                    />
+                  </div>
+                </div>
+              )
+          )}
+        </div>
 
-
-
-            <h2 className="font-bold text-xl text-purple-600">{index + 1}. {topic?.topic}</h2>
-            <div dangerouslySetInnerHTML={{ __html: topic?.content }}
-              style={{
-                lineHeight: '2.5'
-              }}
-            >
-
+        {/* Topics */}
+        {/* <div className="mt-7 w-full flex flex-col gap-8">
+          {topics?.map((topic, index) => (
+            <div key={index} className="p-5 bg-secondary rounded-2xl w-full break-words">
+              <h2 className="font-bold text-xl text-purple-600 mb-3">
+                {index + 1}. {topic?.topic}
+              </h2>
+              <div
+                dangerouslySetInnerHTML={{ __html: topic?.content }}
+                className="text-base md:text-lg leading-relaxed break-words whitespace-normal "
+              />
             </div>
+          ))}
+        </div> */}
 
+        <div className="mt-7 w-full flex flex-col gap-8">
+          {topics?.map((topic, index) => (
+            <div
+              key={index}
+              className="p-5 bg-secondary rounded-2xl w-full break-words"
+            >
+              <h2 className="font-bold text-xl text-purple-600 mb-3">
+                {index + 1}. {topic?.topic}
+              </h2>
 
-          </div>
-        ))}
+              <div
+                className="prose prose-sm md:prose lg:prose-lg max-w-full break-words whitespace-normal overflow-visible"
+                dangerouslySetInnerHTML={{ __html: topic?.content }}
+              />
+            </div>
+          ))}
+        </div>
 
       </div>
+    </ScrollArea>
 
-    </div>
+
+
+
   )
 }
 

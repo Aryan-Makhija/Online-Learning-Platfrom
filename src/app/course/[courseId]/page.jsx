@@ -29,18 +29,11 @@ const CoursePage = () => {
         GetCourseDetails()
     }, [])
     return (
-        <div>
-            <div>
-
-                <AppHeader hideSidebar={true}></AppHeader>
-            </div>
-
-            <div className='flex gap-10    '>
-
-                <ChapterListSidebar  ></ChapterListSidebar>
+        <div className='border-2'>
+       
                 <ChapterContent ></ChapterContent >
-            </div>
-        </div >
+           
+        </div>
     )
 }
 

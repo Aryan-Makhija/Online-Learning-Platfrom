@@ -28,7 +28,7 @@ const EnrollCourseList = () => {
     return enrollcourse?.length > 0 && (
         <div className='mt-3'>
 
-            <h2 className='font-bold text-xl'>Continue Learning the Courses</h2>
+            <h2 className='font-bold text-3xl'>Continue Learning the Courses</h2>
 
             <div className="mt-6 
                 grid 

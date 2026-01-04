@@ -6,7 +6,7 @@ const MyLearning = () => {
     return (
         <div>
             <WelcomeBanner></WelcomeBanner>
-            <h2 className='text-2xl font-bold mt-5 mb-5'>My Learning</h2>
+            {/* <h2 className='text-2xl font-bold mt-5 mb-5'>My Learning</h2> */}
 
 
             <EnrollCourseList></EnrollCourseList>

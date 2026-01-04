@@ -48,7 +48,7 @@ const AppSideBar = () => {
 
         <Sidebar>
             <SidebarHeader >
-                <Link href="/"><div className='flex gap-2 font-bold items-center text-2xl'><Image src={"/logo.svg"} width={40} height={40} alt="logo"></Image>EduAI</div></Link>
+                <Link href="/"><div className='flex gap-2 font-bold items-center text-2xl'><Image src={"/logoimg.jpg"} width={40} height={40} alt="logo"></Image>EduAI</div></Link>
 
             </SidebarHeader>
             <SidebarContent>

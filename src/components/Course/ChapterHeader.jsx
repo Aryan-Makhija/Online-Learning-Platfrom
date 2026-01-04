@@ -5,7 +5,7 @@ import { ArrowBigLeft } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const AppHeader = ({ hideSidebar = false }) => {
+const Chapterheader = ({ hideSidebar = false }) => {
     return (
         <div className='p-4 flex justify-between items-center shadow-sm'>
             {hideSidebar &&  <Link href="/workspace"><div className='flex gap-2 font-bold items-center text-2xl'><Image src={"/logoimg.jpg"} width={40} height={40} alt="logo image"></Image>EduAI</div></Link> }
@@ -15,4 +15,4 @@ const AppHeader = ({ hideSidebar = false }) => {
     )
 }
 
-export default AppHeader
+export default Chapterheader

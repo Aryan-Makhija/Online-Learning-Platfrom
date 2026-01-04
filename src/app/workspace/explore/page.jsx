@@ -28,23 +28,52 @@ const ExploreCourse = () => {
 
 
 
-    const explore = async () => {
+    // const explore = async () => {
 
-        try {
+    //     try {
 
-            if (search.name === "") {
-                seterror("Please Write the Course name!")
-                return;
-            }
-            const response = await axios.post("/api/courses/searchcourse", search)
-            setcourselist(response.data)
-            seterror("")
+    //         if (search.name === "") {
+    //             seterror("Please Write the Course name!")
+    //             return;
+    //         }
+    //         const response = await axios.post("/api/courses/searchcourse", search)
+    //         setcourselist(response.data)
+    //         seterror("")
 
-        } catch (err) {
-            console.log(err.message)
+    //     } catch (err) {
+    //         console.log(err.message)
+    //     }
+    // }
+    useEffect(() => {
+        if (search.name === "") {
+            seterror("");
+            // setcourselist([]); // optional: clear results if input is empty
+     
+            return;
         }
-    }
 
+        // Set a timer to trigger search after 300ms of inactivity
+        const timeout = setTimeout(() => {
+            explore();
+        }, 200);
+
+        // Clear timeout if user types again before 300ms
+        return () => clearTimeout(timeout);
+
+    }, [search.name]); // run effect whenever search.name changes
+
+    // API call
+    const explore = async () => {
+        try {
+            const response = await axios.post("/api/courses/searchcourse", search);
+            setcourselist(response.data);
+            seterror(response.data.length === 0 ? "No courses found" : "");
+           
+        } catch (err) {
+            console.log(err.message);
+            seterror("Something went wrong while searching!");
+        }
+    };
 
 
 
@@ -53,7 +82,7 @@ const ExploreCourse = () => {
 
             <h2 className='font-bold text-3xl mb-6'>Explore More</h2>
 
-            <div className='flex gap-5 w-1/2'>
+            {/* <div className='flex gap-5 w-1/2'>
 
                 <div className='flex flex-col gap-2 w-full'>
                     <Input
@@ -65,6 +94,24 @@ const ExploreCourse = () => {
 
                 </div>
                 <Button variant="outline" className="bg-blue-500 text-white hover:bg-white hover:text-blue-500 hover:outline-1" onClick={explore}>Search</Button>
+            </div> */}
+
+            <div className='flex gap-5 w-1/2'>
+                <div className='flex flex-col gap-2 w-full'>
+                    <Input
+                        placeholder="Search Course"
+                        value={search.name}
+                        onChange={(e) => setsearch({ ...search, name: e.target.value })}
+                    />
+                    <p className='text-m text-red-500'>{error}</p>
+                </div>
+                <Button
+                    variant="outline"
+                    className="bg-blue-500 text-white hover:bg-white hover:text-blue-500 hover:outline-1"
+                    onClick={explore} // optional: allow manual search
+                >
+                    Search
+                </Button>
             </div>
 
             <div className="mt-6 
