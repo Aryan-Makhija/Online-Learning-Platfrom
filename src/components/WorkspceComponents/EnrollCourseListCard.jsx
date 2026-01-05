@@ -19,6 +19,8 @@ const EnrollCourseListCard = ({ course, enrollcourse }) => {
     const courseJson = course?.courseJson?.course
 
     return (
+
+
         <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
