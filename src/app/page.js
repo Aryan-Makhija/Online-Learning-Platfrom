@@ -37,7 +37,7 @@ const floatingIcons = [
 export default function Home() {
   return (
 
-   
+
 
 
     <div className="bg-white text-slate-900 min-h-screen font-sans">
@@ -69,12 +69,15 @@ export default function Home() {
             </Link>
           </SignedOut>
 
-          <div className="md:block hidden">
-            <SignedIn>
-              <UserButton afterSignOutUrl="/" />
-            </SignedIn>
 
-          </div>
+          <SignedIn>
+            <div className="md:flex  hidden justify-center items-center ">
+              <UserButton afterSignOutUrl="/" />
+
+            </div>
+          </SignedIn>
+
+
 
 
 
