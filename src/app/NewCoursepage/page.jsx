@@ -31,11 +31,6 @@ import {
     ExternalLink,
 } from "lucide-react"
 
-
-import Link from "next/link"
-
-
-
 import { useParams } from "next/navigation"
 
 import {
@@ -202,10 +197,14 @@ export default function CourseNotesPage() {
     // =====================================================
 
     const toggleChapter = (index) => {
+
         setExpandedChapters((prev) => ({
+            ...prev,
             [index]: !prev[index],
-        }));
-    };
+        }))
+
+    }
+
 
     // =====================================================
     // SELECT CHAPTER
@@ -654,76 +653,190 @@ export default function CourseNotesPage() {
             {/* TOP HEADER */}
             {/* ================================================= */}
 
+            <header className="
+                h-16
+                bg-white
+                border-b
+                border-amber-200/60
+                px-4
+                md:px-6
+                flex
+                items-center
+                justify-between
+                sticky
+                top-0
+                z-30
+                shadow-sm
+            ">
 
+                <div className="
+                    flex
+                    items-center
+                    gap-3
+                    min-w-0
+                ">
 
-
-            <header className="h-16 bg-white border-b border-amber-200/60 px-4 md:px-6 flex items-center justify-between sticky top-0 z-30 shadow-sm">
-
-                {/* LEFT SECTION: Back Button, Sidebar Toggle & Course Details */}
-                <div className="flex items-center gap-3 min-w-0">
-
-
-
-                    <div className="h-4 w-[1px] bg-slate-200 shrink-0 hidden sm:block" />
-
-                    {/* SIDEBAR TOGGLE */}
                     <button
-                        onClick={() => setSidebarOpen(!sidebarOpen)}
-                        className="p-2 rounded-lg text-slate-600 hover:bg-amber-50 hover:text-amber-900 transition-colors shrink-0"
+                        onClick={() =>
+                            setSidebarOpen(
+                                !sidebarOpen
+                            )
+                        }
+                        className="
+                            p-2
+                            rounded-lg
+                            text-slate-600
+                            hover:bg-amber-50
+                            hover:text-amber-900
+                            transition-colors
+                            shrink-0
+                        "
                         title="Toggle Sidebar"
                     >
-                        {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
+
+                        {sidebarOpen ? (
+                            <X size={20} />
+                        ) : (
+                            <Menu size={20} />
+                        )}
+
                     </button>
 
-                    {/* BACK TO WORKSPACE BUTTON */}
 
-                    <Link
-                        href="/workspace" // Adjust route to your workspace path
-                        className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-amber-100 hover:text-amber-900 transition-colors shrink-0 border border-slate-200/60"
-                        title="Back to Workspace"
-                    >
-                        <ArrowLeft size={16} />
-                        <span className="hidden sm:inline">Workspace</span>
-                    </Link>
-                    {/* COURSE INFO */}
-                    <div className="flex items-center gap-2 min-w-0">
-                        <span className="p-1.5 bg-amber-100 text-amber-800 rounded-md shrink-0">
+                    <div className="
+                        flex
+                        items-center
+                        gap-2
+                        min-w-0
+                    ">
+
+                        <span className="
+                            p-1.5
+                            bg-amber-100
+                            text-amber-800
+                            rounded-md
+                            shrink-0
+                        ">
                             <BookOpen size={18} />
                         </span>
 
+
                         <div className="min-w-0">
-                            <h1 className="font-bold  text-slate-900 text-base leading-tight md:text-lg truncate">
+
+                            <h1 className="
+                                font-bold
+                                text-slate-900
+                                text-base
+                                leading-tight
+                                md:text-lg
+                                truncate
+                            ">
                                 {courseName}
                             </h1>
-                            <p className="text-xs text-slate-500 hidden sm:block truncate">
-                                {courseDescription || "Interactive Study Guide & Code Learning"}
+
+                            <p className="
+                                text-xs
+                                text-slate-500
+                                hidden
+                                sm:block
+                                truncate
+                            ">
+                                {courseDescription ||
+                                    "Interactive Study Guide & Code Learning"}
                             </p>
+
                         </div>
+
                     </div>
 
                 </div>
 
-                {/* RIGHT SECTION: PROGRESS & BOOKMARK */}
-                <div className="flex items-center gap-4 shrink-0">
-                    <div className="hidden sm:flex flex-col items-end">
-                        <span className="text-xs font-semibold text-slate-600">
-                            Course Completion: {progressPercent}%
+
+                {/* PROGRESS */}
+
+                <div className="
+                    flex
+                    items-center
+                    gap-4
+                    shrink-0
+                ">
+
+                    <div className="
+                        hidden
+                        sm:flex
+                        flex-col
+                        items-end
+                    ">
+
+                        <span className="
+                            text-xs
+                            font-semibold
+                            text-slate-600
+                        ">
+                            Course Completion:{" "}
+                            {progressPercent}%
                         </span>
-                        <div className="w-32 bg-amber-100 rounded-full h-2 mt-1 overflow-hidden">
+
+                        <div className="
+                            w-32
+                            bg-amber-100
+                            rounded-full
+                            h-2
+                            mt-1
+                            overflow-hidden
+                        ">
+
                             <div
-                                className="bg-amber-600 h-full rounded-full transition-all duration-300"
-                                style={{ width: `${progressPercent}%` }}
+                                className="
+                                    bg-amber-600
+                                    h-full
+                                    rounded-full
+                                    transition-all
+                                    duration-300
+                                "
+                                style={{
+                                    width:
+                                        `${progressPercent}%`,
+                                }}
                             />
+
                         </div>
+
                     </div>
 
-                    <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-amber-100 text-amber-900 rounded-md hover:bg-amber-200 transition-colors">
+
+                    <button
+                        className="
+                            flex
+                            items-center
+                            gap-1.5
+                            px-3
+                            py-1.5
+                            text-xs
+                            font-medium
+                            bg-amber-100
+                            text-amber-900
+                            rounded-md
+                            hover:bg-amber-200
+                            transition-colors
+                        "
+                    >
+
                         <Bookmark size={14} />
-                        <span className="hidden xs:inline">Bookmark</span>
+
+                        <span className="
+                            hidden
+                            xs:inline
+                        ">
+                            Bookmark
+                        </span>
+
                     </button>
+
                 </div>
 
             </header>
+
 
             {/* ================================================= */}
             {/* MAIN */}
@@ -758,9 +871,10 @@ export default function CourseNotesPage() {
                         duration-300
                         ease-in-out
 
-                        ${sidebarOpen
-                            ? "translate-x-0"
-                            : "-translate-x-full md:translate-x-0 md:w-0 md:overflow-hidden md:border-none"
+                        ${
+                            sidebarOpen
+                                ? "translate-x-0"
+                                : "-translate-x-full md:translate-x-0 md:w-0 md:overflow-hidden md:border-none"
                         }
                     `}
                 >
@@ -841,7 +955,7 @@ export default function CourseNotesPage() {
 
                                 const isExpanded =
                                     expandedChapters[
-                                    originalIndex
+                                        originalIndex
                                     ]
 
                                 const isActiveChapter =
@@ -877,7 +991,7 @@ export default function CourseNotesPage() {
 
                                         {/* CHAPTER HEADER */}
 
-                                        {/* <button
+                                        <button
                                             onClick={() => {
 
                                                 toggleChapter(
@@ -900,9 +1014,10 @@ export default function CourseNotesPage() {
                                                 font-semibold
                                                 transition-colors
 
-                                                ${isActiveChapter
-                                                    ? "bg-amber-100/70 text-amber-900"
-                                                    : "text-slate-800 hover:bg-amber-50/60"
+                                                ${
+                                                    isActiveChapter
+                                                        ? "bg-amber-100/70 text-amber-900"
+                                                        : "text-slate-800 hover:bg-amber-50/60"
                                                 }
                                             `}
                                         >
@@ -980,102 +1095,61 @@ export default function CourseNotesPage() {
 
                                             </span>
 
-                                        </button> */}
-
-                                        {/* CHAPTER HEADER */}
-                                        <button
-                                            type="button"
-                                            onClick={() => {
-                                                toggleChapter(originalIndex);
-                                                selectChapter(originalIndex);
-                                            }}
-                                            className={`
-        w-full
-        px-3.5
-        py-3
-        flex
-        items-center
-        justify-between
-        text-left
-        font-semibold
-        transition-colors
-        ${isActiveChapter
-                                                    ? "bg-amber-100/70 text-amber-900"
-                                                    : "text-slate-800 hover:bg-amber-50/60"
-                                                }
-    `}
-                                        >
-                                            <div className="flex items-start gap-2.5 min-w-0">
-                                                {isCompleted ? (
-                                                    <CheckCircle
-                                                        size={17}
-                                                        className="text-emerald-600 shrink-0 mt-0.5"
-                                                    />
-                                                ) : (
-                                                    <span className="w-[17px] h-[17px] rounded-full border-2 border-slate-300 shrink-0 mt-0.5" />
-                                                )}
-
-                                                <span className="break-words leading-5 pr-2">
-                                                    {chapter?.chapterNumber ?? originalIndex + 1}. {chapter?.chapterTitle}
-                                                </span>
-                                            </div>
-
-                                            <span className="text-slate-400 shrink-0">
-                                                {isExpanded ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
-                                            </span>
                                         </button>
+
+
                                         {/* SECTIONS */}
 
                                         {(isExpanded ||
                                             searchQuery) && (
 
-                                                <div className="
+                                            <div className="
                                                 border-t
                                                 border-amber-100
                                                 bg-amber-50/20
                                                 py-1
                                             ">
 
-                                                    {chapterSections.map(
-                                                        (
-                                                            section,
+                                                {chapterSections.map(
+                                                    (
+                                                        section,
+                                                        sectionIndex
+                                                    ) => {
+
+                                                        const isActive =
+                                                            isActiveChapter &&
+                                                            activeSectionIndex ===
                                                             sectionIndex
-                                                        ) => {
 
-                                                            const isActive =
-                                                                isActiveChapter &&
-                                                                activeSectionIndex ===
-                                                                sectionIndex
+                                                        const sectionMatches =
+                                                            !searchQuery ||
+                                                            section?.title
+                                                                ?.toLowerCase()
+                                                                .includes(
+                                                                    searchQuery.toLowerCase()
+                                                                )
 
-                                                            const sectionMatches =
-                                                                !searchQuery ||
-                                                                section?.title
-                                                                    ?.toLowerCase()
-                                                                    .includes(
-                                                                        searchQuery.toLowerCase()
-                                                                    )
-
-                                                            if (
-                                                                !sectionMatches
-                                                            ) {
-                                                                return null
-                                                            }
+                                                        if (
+                                                            !sectionMatches
+                                                        ) {
+                                                            return null
+                                                        }
 
 
-                                                            return (
+                                                        return (
 
-                                                                <button
-                                                                    key={
-                                                                        section?.sectionNumber ??
+                                                            <button
+                                                                key={
+                                                                    section?.sectionNumber ??
+                                                                    sectionIndex
+                                                                }
+                                                                onClick={() =>
+                                                                    selectSection(
+                                                                        originalIndex,
                                                                         sectionIndex
-                                                                    }
-                                                                    onClick={() =>
-                                                                        selectSection(
-                                                                            originalIndex,
-                                                                            sectionIndex
-                                                                        )
-                                                                    }
-                                                                    className={`
+                                                                    )
+                                                                }
+                                                                className={`
                                                                     w-full
                                                                     flex
                                                                     items-start
@@ -1085,49 +1159,50 @@ export default function CourseNotesPage() {
                                                                     text-left
                                                                     transition-colors
 
-                                                                    ${isActive
+                                                                    ${
+                                                                        isActive
                                                                             ? "bg-amber-100 text-amber-900 border-l-4 border-amber-600 pl-3"
                                                                             : "text-slate-600 hover:bg-amber-50 hover:text-slate-900"
-                                                                        }
+                                                                    }
                                                                 `}
-                                                                >
+                                                            >
 
-                                                                    <span className="
+                                                                <span className="
                                                                     text-[10px]
                                                                     font-mono
                                                                     text-slate-400
                                                                     mt-1
                                                                     shrink-0
                                                                 ">
-                                                                        {section?.sectionNumber ??
-                                                                            sectionIndex +
-                                                                            1}
-                                                                    </span>
+                                                                    {section?.sectionNumber ??
+                                                                        sectionIndex +
+                                                                        1}
+                                                                </span>
 
 
-                                                                    <span className="
+                                                                <span className="
                                                                     text-xs
                                                                     md:text-sm
                                                                     leading-5
                                                                     break-words
                                                                 ">
 
-                                                                        {
-                                                                            section?.title
-                                                                        }
+                                                                    {
+                                                                        section?.title
+                                                                    }
 
-                                                                    </span>
+                                                                </span>
 
-                                                                </button>
+                                                            </button>
 
-                                                            )
+                                                        )
 
-                                                        }
-                                                    )}
+                                                    }
+                                                )}
 
-                                                </div>
+                                            </div>
 
-                                            )}
+                                        )}
 
                                     </div>
 
@@ -1314,7 +1389,7 @@ export default function CourseNotesPage() {
                                 {currentChapter
                                     ?.chapterDescription && (
 
-                                        <p className="
+                                    <p className="
                                         text-slate-600
                                         text-sm
                                         md:text-base
@@ -1326,14 +1401,14 @@ export default function CourseNotesPage() {
                                         border-l-2
                                         border-amber-400
                                     ">
-                                            "
-                                            {
-                                                currentChapter.chapterDescription
-                                            }
-                                            "
-                                        </p>
+                                        "
+                                        {
+                                            currentChapter.chapterDescription
+                                        }
+                                        "
+                                    </p>
 
-                                    )}
+                                )}
 
 
                                 {/* ================================================= */}
@@ -1343,7 +1418,7 @@ export default function CourseNotesPage() {
                                 {youtubeVideos.length >
                                     0 && (
 
-                                        <div className="
+                                    <div className="
                                         mb-8
                                         rounded-xl
                                         border
@@ -1353,15 +1428,15 @@ export default function CourseNotesPage() {
                                     ">
 
 
-                                            {/* VIDEO BUTTON */}
+                                        {/* VIDEO BUTTON */}
 
-                                            <button
-                                                onClick={() =>
-                                                    setShowVideos(
-                                                        !showVideos
-                                                    )
-                                                }
-                                                className="
+                                        <button
+                                            onClick={() =>
+                                                setShowVideos(
+                                                    !showVideos
+                                                )
+                                            }
+                                            className="
                                                 w-full
                                                 px-4
                                                 py-3.5
@@ -1371,115 +1446,115 @@ export default function CourseNotesPage() {
                                                 hover:bg-red-50
                                                 transition-colors
                                             "
-                                            >
+                                        >
 
-                                                <div className="
+                                            <div className="
                                                 flex
                                                 items-center
                                                 gap-3
                                             ">
 
-                                                    <div className="
+                                                <div className="
                                                     p-2
                                                     rounded-lg
                                                     bg-red-100
                                                     text-red-600
                                                 ">
 
-                                                        <Play
-                                                            size={17}
-                                                            className="
+                                                    <Play
+                                                        size={17}
+                                                        className="
                                                             fill-red-600
                                                         "
-                                                        />
-
-                                                    </div>
-
-
-                                                    <div className="
-                                                    text-left
-                                                ">
-
-                                                        <p className="
-                                                        font-semibold
-                                                        text-sm
-                                                        text-slate-800
-                                                    ">
-                                                            Recommended
-                                                            Tutorials
-                                                        </p>
-
-                                                        <p className="
-                                                        text-xs
-                                                        text-slate-500
-                                                        mt-0.5
-                                                    ">
-                                                            {
-                                                                youtubeVideos.length
-                                                            }{" "}
-                                                            long-form
-                                                            videos
-                                                        </p>
-
-                                                    </div>
+                                                    />
 
                                                 </div>
 
 
-                                                {showVideos ? (
-
-                                                    <ChevronDown
-                                                        size={18}
-                                                        className="
-                                                        text-slate-400
-                                                    "
-                                                    />
-
-                                                ) : (
-
-                                                    <ChevronRight
-                                                        size={18}
-                                                        className="
-                                                        text-slate-400
-                                                    "
-                                                    />
-
-                                                )}
-
-                                            </button>
-
-
-                                            {/* VIDEO CONTENT */}
-
-                                            {showVideos && (
-
                                                 <div className="
+                                                    text-left
+                                                ">
+
+                                                    <p className="
+                                                        font-semibold
+                                                        text-sm
+                                                        text-slate-800
+                                                    ">
+                                                        Recommended
+                                                        Tutorials
+                                                    </p>
+
+                                                    <p className="
+                                                        text-xs
+                                                        text-slate-500
+                                                        mt-0.5
+                                                    ">
+                                                        {
+                                                            youtubeVideos.length
+                                                        }{" "}
+                                                        long-form
+                                                        videos
+                                                    </p>
+
+                                                </div>
+
+                                            </div>
+
+
+                                            {showVideos ? (
+
+                                                <ChevronDown
+                                                    size={18}
+                                                    className="
+                                                        text-slate-400
+                                                    "
+                                                />
+
+                                            ) : (
+
+                                                <ChevronRight
+                                                    size={18}
+                                                    className="
+                                                        text-slate-400
+                                                    "
+                                                />
+
+                                            )}
+
+                                        </button>
+
+
+                                        {/* VIDEO CONTENT */}
+
+                                        {showVideos && (
+
+                                            <div className="
                                                 border-t
                                                 border-red-200
                                                 p-4
                                                 bg-white
                                             ">
 
-                                                    <div className="
+                                                <div className="
                                                     grid
                                                     grid-cols-1
                                                     md:grid-cols-2
                                                     gap-5
                                                 ">
 
-                                                        {youtubeVideos
-                                                            .map(
-                                                                (
-                                                                    video,
-                                                                    videoIndex
-                                                                ) => (
+                                                    {youtubeVideos
+                                                        .map(
+                                                            (
+                                                                video,
+                                                                videoIndex
+                                                            ) => (
 
-                                                                    <div
-                                                                        key={
-                                                                            video?.videoId ||
-                                                                            videoIndex
-                                                                        }
-                                                                        className="
+                                                                <div
+                                                                    key={
+                                                                        video?.videoId ||
+                                                                        videoIndex
+                                                                    }
+                                                                    className="
                                                                         rounded-xl
                                                                         overflow-hidden
                                                                         border
@@ -1487,46 +1562,46 @@ export default function CourseNotesPage() {
                                                                         bg-white
                                                                         shadow-sm
                                                                     "
-                                                                    >
+                                                                >
 
-                                                                        {video?.videoId ? (
+                                                                    {video?.videoId ? (
 
-                                                                            <div className="
+                                                                        <div className="
                                                                             relative
                                                                             w-full
                                                                             aspect-video
                                                                             bg-black
                                                                         ">
 
-                                                                                <YouTube
-                                                                                    videoId={
-                                                                                        video.videoId
-                                                                                    }
-                                                                                    opts={{
-                                                                                        width: "100%",
-                                                                                        height: "100%",
-                                                                                        playerVars: {
-                                                                                            modestbranding: 1,
-                                                                                            rel: 0,
-                                                                                        },
-                                                                                    }}
-                                                                                    className="
+                                                                            <YouTube
+                                                                                videoId={
+                                                                                    video.videoId
+                                                                                }
+                                                                                opts={{
+                                                                                    width: "100%",
+                                                                                    height: "100%",
+                                                                                    playerVars: {
+                                                                                        modestbranding: 1,
+                                                                                        rel: 0,
+                                                                                    },
+                                                                                }}
+                                                                                className="
                                                                                     absolute
                                                                                     inset-0
                                                                                     w-full
                                                                                     h-full
                                                                                 "
-                                                                                    iframeClassName="
+                                                                                iframeClassName="
                                                                                     w-full
                                                                                     h-full
                                                                                 "
-                                                                                />
+                                                                            />
 
-                                                                            </div>
+                                                                        </div>
 
-                                                                        ) : (
+                                                                    ) : (
 
-                                                                            <div className="
+                                                                        <div className="
                                                                             aspect-video
                                                                             flex
                                                                             items-center
@@ -1535,59 +1610,59 @@ export default function CourseNotesPage() {
                                                                             text-sm
                                                                             text-slate-500
                                                                         ">
-                                                                                Video
-                                                                                unavailable
-                                                                            </div>
+                                                                            Video
+                                                                            unavailable
+                                                                        </div>
 
-                                                                        )}
+                                                                    )}
 
 
-                                                                        <div className="
+                                                                    <div className="
                                                                         p-3
                                                                     ">
 
-                                                                            <p className="
+                                                                        <p className="
                                                                             text-sm
                                                                             font-semibold
                                                                             text-slate-800
                                                                             line-clamp-2
                                                                         ">
-                                                                                {
-                                                                                    video?.title
-                                                                                }
-                                                                            </p>
+                                                                            {
+                                                                                video?.title
+                                                                            }
+                                                                        </p>
 
 
-                                                                            {video?.channelTitle && (
+                                                                        {video?.channelTitle && (
 
-                                                                                <p className="
+                                                                            <p className="
                                                                                 text-xs
                                                                                 text-slate-500
                                                                                 mt-1
                                                                             ">
-                                                                                    {
-                                                                                        video.channelTitle
-                                                                                    }
-                                                                                </p>
+                                                                                {
+                                                                                    video.channelTitle
+                                                                                }
+                                                                            </p>
 
-                                                                            )}
-
-                                                                        </div>
+                                                                        )}
 
                                                                     </div>
 
-                                                                )
-                                                            )}
+                                                                </div>
 
-                                                    </div>
+                                                            )
+                                                        )}
 
                                                 </div>
 
-                                            )}
+                                            </div>
 
-                                        </div>
+                                        )}
 
-                                    )}
+                                    </div>
+
+                                )}
 
 
                                 {/* ================================================= */}
@@ -1651,19 +1726,19 @@ export default function CourseNotesPage() {
                                             {currentSection
                                                 ?.subtitle && (
 
-                                                    <p className="
+                                                <p className="
                                                     mt-2
                                                     text-sm
                                                     md:text-base
                                                     text-slate-500
                                                     italic
                                                 ">
-                                                        {
-                                                            currentSection.subtitle
-                                                        }
-                                                    </p>
+                                                    {
+                                                        currentSection.subtitle
+                                                    }
+                                                </p>
 
-                                                )}
+                                            )}
 
                                         </div>
 
@@ -1675,11 +1750,11 @@ export default function CourseNotesPage() {
                                         {currentSection
                                             ?.theory && (
 
-                                                <div className="
+                                            <div className="
                                                 space-y-3
                                             ">
 
-                                                    <h3 className="
+                                                <h3 className="
                                                     text-lg
                                                     font-bold
                                                     text-slate-800
@@ -1688,33 +1763,33 @@ export default function CourseNotesPage() {
                                                     gap-2
                                                 ">
 
-                                                        <FileText
-                                                            size={18}
-                                                            className="
+                                                    <FileText
+                                                        size={18}
+                                                        className="
                                                             text-amber-600
                                                         "
-                                                        />
+                                                    />
 
-                                                        Explanation
+                                                    Explanation
 
-                                                    </h3>
+                                                </h3>
 
 
-                                                    <div className="
+                                                <div className="
                                                     text-slate-700
                                                     leading-relaxed
                                                     text-sm
                                                     md:text-base
                                                     whitespace-pre-line
                                                 ">
-                                                        {
-                                                            currentSection.theory
-                                                        }
-                                                    </div>
-
+                                                    {
+                                                        currentSection.theory
+                                                    }
                                                 </div>
 
-                                            )}
+                                            </div>
+
+                                        )}
 
 
                                         {/* ================================================= */}
@@ -1724,7 +1799,7 @@ export default function CourseNotesPage() {
                                         {currentSection
                                             ?.codeExample && (
 
-                                                <div className="
+                                            <div className="
                                                 my-8
                                                 rounded-xl
                                                 overflow-hidden
@@ -1735,9 +1810,9 @@ export default function CourseNotesPage() {
                                             ">
 
 
-                                                    {/* CODE HEADER */}
+                                                {/* CODE HEADER */}
 
-                                                    <div className="
+                                                <div className="
                                                     bg-slate-800/90
                                                     px-4
                                                     py-2.5
@@ -1752,63 +1827,63 @@ export default function CourseNotesPage() {
                                                     border-slate-700
                                                 ">
 
-                                                        <div className="
+                                                    <div className="
                                                         flex
                                                         items-center
                                                         gap-2
                                                         min-w-0
                                                     ">
 
-                                                            <Code
-                                                                size={14}
-                                                                className="
+                                                        <Code
+                                                            size={14}
+                                                            className="
                                                                 text-amber-400
                                                                 shrink-0
                                                             "
-                                                            />
+                                                        />
 
-                                                            <span className="
+                                                        <span className="
                                                             truncate
                                                         ">
-                                                                {
-                                                                    currentSection
-                                                                        .codeExample
-                                                                        .title
-                                                                }
-                                                            </span>
+                                                            {
+                                                                currentSection
+                                                                    .codeExample
+                                                                    .title
+                                                            }
+                                                        </span>
 
-                                                        </div>
+                                                    </div>
 
 
-                                                        <div className="
+                                                    <div className="
                                                         flex
                                                         items-center
                                                         gap-3
                                                         shrink-0
                                                     ">
 
-                                                            <span className="
+                                                        <span className="
                                                             text-[10px]
                                                             uppercase
                                                             text-slate-400
                                                         ">
-                                                                {
+                                                            {
+                                                                currentSection
+                                                                    .codeExample
+                                                                    .language
+                                                            }
+                                                        </span>
+
+
+                                                        <button
+                                                            onClick={() =>
+                                                                handleCopyCode(
                                                                     currentSection
                                                                         .codeExample
-                                                                        .language
-                                                                }
-                                                            </span>
-
-
-                                                            <button
-                                                                onClick={() =>
-                                                                    handleCopyCode(
-                                                                        currentSection
-                                                                            .codeExample
-                                                                            .code
-                                                                    )
-                                                                }
-                                                                className="
+                                                                        .code
+                                                                )
+                                                            }
+                                                            className="
                                                                 flex
                                                                 items-center
                                                                 gap-1
@@ -1821,95 +1896,95 @@ export default function CourseNotesPage() {
                                                                 py-1
                                                                 rounded
                                                             "
-                                                            >
+                                                        >
 
-                                                                {copiedCode ? (
+                                                            {copiedCode ? (
 
-                                                                    <>
+                                                                <>
 
-                                                                        <Check
-                                                                            size={13}
-                                                                            className="
+                                                                    <Check
+                                                                        size={13}
+                                                                        className="
                                                                             text-emerald-400
                                                                         "
-                                                                        />
+                                                                    />
 
-                                                                        Copied!
+                                                                    Copied!
 
-                                                                    </>
+                                                                </>
 
-                                                                ) : (
+                                                            ) : (
 
-                                                                    <>
+                                                                <>
 
-                                                                        <Copy
-                                                                            size={13}
-                                                                        />
+                                                                    <Copy
+                                                                        size={13}
+                                                                    />
 
-                                                                        Copy Code
+                                                                    Copy Code
 
-                                                                    </>
+                                                                </>
 
-                                                                )}
+                                                            )}
 
-                                                            </button>
-
-                                                        </div>
+                                                        </button>
 
                                                     </div>
 
+                                                </div>
 
-                                                    {/* SYNTAX HIGHLIGHTER */}
 
-                                                    <div className="
+                                                {/* SYNTAX HIGHLIGHTER */}
+
+                                                <div className="
                                                     overflow-x-auto
                                                 ">
 
-                                                        <SyntaxHighlighter
-                                                            language={
-                                                                currentSection
-                                                                    .codeExample
-                                                                    .language
-                                                            }
-                                                            style={
-                                                                vscDarkPlus
-                                                            }
-                                                            customStyle={{
-                                                                margin: 0,
-                                                                padding:
-                                                                    "20px",
-                                                                fontSize:
-                                                                    "13px",
-                                                                lineHeight:
-                                                                    "1.7",
-                                                                background:
-                                                                    "#0f172a",
-                                                                minWidth:
-                                                                    "100%",
-                                                            }}
-                                                            wrapLongLines={
-                                                                false
-                                                            }
-                                                        >
+                                                    <SyntaxHighlighter
+                                                        language={
+                                                            currentSection
+                                                                .codeExample
+                                                                .language
+                                                        }
+                                                        style={
+                                                            vscDarkPlus
+                                                        }
+                                                        customStyle={{
+                                                            margin: 0,
+                                                            padding:
+                                                                "20px",
+                                                            fontSize:
+                                                                "13px",
+                                                            lineHeight:
+                                                                "1.7",
+                                                            background:
+                                                                "#0f172a",
+                                                            minWidth:
+                                                                "100%",
+                                                        }}
+                                                        wrapLongLines={
+                                                            false
+                                                        }
+                                                    >
 
-                                                            {
-                                                                currentSection
-                                                                    .codeExample
-                                                                    .code
-                                                            }
+                                                        {
+                                                            currentSection
+                                                                .codeExample
+                                                                .code
+                                                        }
 
-                                                        </SyntaxHighlighter>
+                                                    </SyntaxHighlighter>
 
-                                                    </div>
+                                                </div>
 
 
-                                                    {/* CODE EXPLANATION */}
+                                                {/* CODE EXPLANATION */}
 
-                                                    {currentSection
-                                                        .codeExample
-                                                        ?.explanation && (
+                                                {currentSection
+                                                    .codeExample
+                                                    ?.explanation && (
 
-                                                            <div className="
+                                                    <div className="
                                                         p-4
                                                         md:p-5
                                                         bg-slate-800
@@ -1917,53 +1992,53 @@ export default function CourseNotesPage() {
                                                         border-slate-700
                                                     ">
 
-                                                                <div className="
+                                                        <div className="
                                                             flex
                                                             items-center
                                                             gap-2
                                                             mb-2
                                                         ">
 
-                                                                    <Lightbulb
-                                                                        size={15}
-                                                                        className="
+                                                            <Lightbulb
+                                                                size={15}
+                                                                className="
                                                                     text-amber-400
                                                                 "
-                                                                    />
+                                                            />
 
-                                                                    <span className="
+                                                            <span className="
                                                                 text-xs
                                                                 font-bold
                                                                 text-slate-200
                                                                 uppercase
                                                                 tracking-wide
                                                             ">
-                                                                        Code
-                                                                        Explanation
-                                                                    </span>
+                                                                Code
+                                                                Explanation
+                                                            </span>
 
-                                                                </div>
+                                                        </div>
 
 
-                                                                <p className="
+                                                        <p className="
                                                             text-sm
                                                             leading-6
                                                             text-slate-300
                                                         ">
-                                                                    {
-                                                                        currentSection
-                                                                            .codeExample
-                                                                            .explanation
-                                                                    }
-                                                                </p>
+                                                            {
+                                                                currentSection
+                                                                    .codeExample
+                                                                    .explanation
+                                                            }
+                                                        </p>
 
-                                                            </div>
+                                                    </div>
 
-                                                        )}
+                                                )}
 
-                                                </div>
+                                            </div>
 
-                                            )}
+                                        )}
 
 
                                         {/* ================================================= */}
@@ -2039,92 +2114,177 @@ export default function CourseNotesPage() {
                         {/* NAVIGATION */}
                         {/* ================================================= */}
 
-                        <div className="mt-8 flex items-center justify-between gap-2 sm:gap-4">
+                        <div className="
+                            mt-8
+                            flex
+                            items-center
+                            justify-between
+                            gap-4
+                        ">
+
 
                             {/* PREVIOUS */}
+
                             <button
-                                onClick={goPrevious}
-                                disabled={activeChapterIndex === 0 && activeSectionIndex === 0}
+                                onClick={
+                                    goPrevious
+                                }
+                                disabled={
+                                    activeChapterIndex ===
+                                        0 &&
+                                    activeSectionIndex ===
+                                        0
+                                }
                                 className="
-            flex-1 sm:flex-none
-            flex items-center justify-center gap-1.5 sm:gap-2
-            px-2.5 sm:px-4 py-2
-            text-xs md:text-sm font-semibold
-            bg-white border border-amber-200 text-slate-700
-            rounded-xl hover:bg-amber-50 transition-colors
-            disabled:opacity-40 disabled:cursor-not-allowed
-            shrink-0
-        "
+                                    flex
+                                    items-center
+                                    gap-2
+                                    px-4
+                                    py-2
+                                    text-xs
+                                    md:text-sm
+                                    font-semibold
+                                    bg-white
+                                    border
+                                    border-amber-200
+                                    text-slate-700
+                                    rounded-xl
+                                    hover:bg-amber-50
+                                    transition-colors
+                                    disabled:opacity-40
+                                    disabled:cursor-not-allowed
+                                "
                             >
-                                <ArrowLeft className="w-4 h-4 shrink-0" />
-                                <span>Previous</span>
+
+                                <ArrowLeft
+                                    size={16}
+                                />
+
+                                <span>
+                                    Previous
+                                </span>
+
                             </button>
 
 
                             {/* COMPLETE */}
-                            <div className="flex-1 sm:flex-none flex justify-center">
-                                {!completedChapters.includes(activeChapterIndex) ? (
+
+                            <div>
+
+                                {!completedChapters.includes(
+                                    activeChapterIndex
+                                ) ? (
+
                                     <button
-                                        onClick={markChapterCompleted}
+                                        onClick={
+                                            markChapterCompleted
+                                        }
                                         className="
-                    w-full sm:w-auto
-                    flex items-center justify-center gap-1.5 sm:gap-2
-                    px-2.5 sm:px-4 py-2
-                    text-xs md:text-sm font-semibold
-                    bg-emerald-600 text-white
-                    rounded-xl hover:bg-emerald-700 transition-colors
-                    shadow-sm shrink-0
-                "
+                                            flex
+                                            items-center
+                                            gap-2
+                                            px-4
+                                            py-2
+                                            text-xs
+                                            md:text-sm
+                                            font-semibold
+                                            bg-emerald-600
+                                            text-white
+                                            rounded-xl
+                                            hover:bg-emerald-700
+                                            transition-colors
+                                            shadow-sm
+                                        "
                                     >
-                                        <CheckCircle className="w-4 h-4 shrink-0" />
-                                        <span>
-                                            Complete<span className="hidden sm:inline">&nbsp;Chapter</span>
-                                        </span>
+
+                                        <CheckCircle
+                                            size={16}
+                                        />
+
+                                        Complete Chapter
+
                                     </button>
+
                                 ) : (
+
                                     <button
-                                        onClick={markChapterIncomplete}
+                                        onClick={
+                                            markChapterIncomplete
+                                        }
                                         className="
-                    w-full sm:w-auto
-                    flex items-center justify-center gap-1.5 sm:gap-2
-                    px-2.5 sm:px-4 py-2
-                    text-xs md:text-sm font-semibold
-                    bg-emerald-50 text-emerald-700 border border-emerald-200
-                    rounded-xl transition-colors
-                    shrink-0
-                "
+                                            flex
+                                            items-center
+                                            gap-2
+                                            px-4
+                                            py-2
+                                            text-xs
+                                            md:text-sm
+                                            font-semibold
+                                            bg-emerald-50
+                                            text-emerald-700
+                                            border
+                                            border-emerald-200
+                                            rounded-xl
+                                        "
                                     >
-                                        <CheckCircle className="w-4 h-4 shrink-0" />
-                                        <span>Completed</span>
+
+                                        <CheckCircle
+                                            size={16}
+                                        />
+
+                                        Completed
+
                                     </button>
+
                                 )}
+
                             </div>
 
 
                             {/* NEXT */}
+
                             <button
-                                onClick={goNext}
+                                onClick={
+                                    goNext
+                                }
                                 disabled={
-                                    activeChapterIndex === course.length - 1 &&
-                                    activeSectionIndex === sections.length - 1
+                                    activeChapterIndex ===
+                                        course.length - 1 &&
+                                    activeSectionIndex ===
+                                        sections.length - 1
                                 }
                                 className="
-            flex-1 sm:flex-none
-            flex items-center justify-center gap-1.5 sm:gap-2
-            px-2.5 sm:px-4 py-2
-            text-xs md:text-sm font-semibold
-            bg-amber-600 text-white
-            rounded-xl hover:bg-amber-700 transition-colors
-            shadow-sm
-            disabled:opacity-40 disabled:cursor-not-allowed
-            shrink-0
-        "
+                                    flex
+                                    items-center
+                                    gap-2
+                                    px-4
+                                    py-2
+                                    text-xs
+                                    md:text-sm
+                                    font-semibold
+                                    bg-amber-600
+                                    text-white
+                                    rounded-xl
+                                    hover:bg-amber-700
+                                    transition-colors
+                                    shadow-sm
+                                    disabled:opacity-40
+                                    disabled:cursor-not-allowed
+                                "
                             >
-                                <span>Next</span>
-                                <ArrowRight className="w-4 h-4 shrink-0" />
+
+                                <span>
+                                    Next
+                                </span>
+
+                                <ArrowRight
+                                    size={16}
+                                />
+
                             </button>
 
                         </div>
+
 
                         {/* ================================================= */}
                         {/* CHAPTER COMPLETION MESSAGE */}
@@ -2134,7 +2294,7 @@ export default function CourseNotesPage() {
                             activeChapterIndex
                         ) && (
 
-                                <div className="
+                            <div className="
                                 mt-5
                                 flex
                                 items-center
@@ -2145,16 +2305,16 @@ export default function CourseNotesPage() {
                                 text-emerald-700
                             ">
 
-                                    <CheckCircle
-                                        size={17}
-                                    />
+                                <CheckCircle
+                                    size={17}
+                                />
 
-                                    You have completed this
-                                    chapter.
+                                You have completed this
+                                chapter.
 
-                                </div>
+                            </div>
 
-                            )}
+                        )}
 
                     </div>
 

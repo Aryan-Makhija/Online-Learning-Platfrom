@@ -3,6 +3,8 @@
 
 import React from 'react'
 import EditCoursePage from '../../edit-course/[courseId]/page'
+import Footer from '@/components/WorkspceComponents/Footer'
+
 
 const ViewCourse = () => {
 
@@ -10,7 +12,9 @@ const ViewCourse = () => {
 
     return (
         <div>
-            <EditCoursePage viewCourse = {true}></EditCoursePage>
+
+            <EditCoursePage viewCourse={true}></EditCoursePage>
+          
         </div>
     )
 }

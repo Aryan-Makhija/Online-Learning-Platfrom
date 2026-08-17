@@ -1,4 +1,5 @@
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
+import { Toaster } from '@/components/ui/sonner'
 import AppHeader from '@/components/WorkspceComponents/AppHeader'
 import AppSideBar from '@/components/WorkspceComponents/AppSideBar'
 import WelcomeBanner from '@/components/WorkspceComponents/WelcomeBanner'
@@ -11,24 +12,24 @@ const WorkSpaceProvider = ({ children }) => {
     return (
 
 
-        <SidebarProvider>
+        // <SidebarProvider>
 
-            <AppSideBar></AppSideBar>
-            {/* <SidebarTrigger>
-            </SidebarTrigger> */}
+        //     <AppSideBar></AppSideBar>
+        //     {/* <SidebarTrigger>
+        //     </SidebarTrigger> */}
 
-            <div className='w-full'>
-                <AppHeader></AppHeader>
-
-
-                <div className='p-10'>
+        //     <div className='w-full'>
+        //         <AppHeader></AppHeader>
 
 
-                    {children}
-                </div>
+        <div className=''>
+            <Toaster></Toaster>
 
-            </div>
-        </SidebarProvider>
+            {children}
+        </div>
+
+        //     </div>
+        // </SidebarProvider>
 
     )
 }

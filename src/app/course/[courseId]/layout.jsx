@@ -13,11 +13,14 @@ export const metadata = {
 
 const WorkSpacelayout = ({ children }) => {
     return (
-        <CourseProvider>
+        // <CourseProvider>
 
-            <Toaster></Toaster>
-            <div>{children}</div>
-        </CourseProvider>
+        
+
+
+                <div>{children}</div>
+            
+        // </CourseProvider>
 
     )
 }

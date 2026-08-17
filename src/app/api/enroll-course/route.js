@@ -1,5 +1,5 @@
 import db from "@/lib/config/db";
-import { courseTable, enrollCourseTable } from "@/lib/config/schema";
+import usersTable, { courseTable, enrollCourseTable } from "@/lib/config/schema";
 import { currentUser } from "@clerk/nextjs/server";
 import { and, desc, eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
@@ -52,15 +52,223 @@ export async function GET(req) {
 
 }
 
+// export async function PUT(req) {
+//     const { completedchapters, courseId } = await req.json()
+
+//     const user = await currentUser()
+
+//     const result = await db.update(enrollCourseTable).set({
+//         completedChapters: completedchapters
+//     }).where(and(eq(enrollCourseTable.cid, courseId), eq(enrollCourseTable.userEmail, user?.primaryEmailAddress?.emailAddress))).returning(enrollCourseTable)
+
+
+//     return NextResponse.json(result)
+// }
+
+
+
+
+
 export async function PUT(req) {
-    const { completedchapters, courseId } = await req.json()
+    try {
+        const { completedchapters, courseId } = await req.json();
 
-    const user = await currentUser()
+        // -----------------------------------------
+        // 1. Get current user
+        // -----------------------------------------
 
-    const result = await db.update(enrollCourseTable).set({
-        completedChapters: completedchapters
-    }).where(and(eq(enrollCourseTable.cid, courseId), eq(enrollCourseTable.userEmail, user?.primaryEmailAddress?.emailAddress))).returning(enrollCourseTable)
+        const user = await currentUser();
+
+        if (!user) {
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "Unauthorized user",
+                },
+                { status: 401 }
+            );
+        }
+
+        const email = user.primaryEmailAddress?.emailAddress;
+
+        if (!email) {
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "User email not found",
+                },
+                { status: 400 }
+            );
+        }
+
+        // -----------------------------------------
+        // 2. Get current course
+        // -----------------------------------------
+
+        const courseResult = await db
+            .select()
+            .from(courseTable)
+            .where(eq(courseTable.cid, courseId));
+
+        if (courseResult.length === 0) {
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "Course not found",
+                },
+                { status: 404 }
+            );
+        }
+
+        const course = courseResult[0];
+
+        // -----------------------------------------
+        // 3. Get chapters
+        // -----------------------------------------
+
+        const chapters = course.courseJson?.course?.chapters || [];
+
+        // completedChapters uses ZERO-based indexes
+        const completed = Array.isArray(completedchapters)
+            ? [...new Set(completedchapters.map(Number))]
+            : [];
+
+        // -----------------------------------------
+        // 4. Check if all chapters are completed
+        // -----------------------------------------
+
+        const allChaptersCompleted =
+            chapters.length > 0 &&
+            chapters.every((_, index) =>
+                completed.includes(index)
+            );
+
+        const courseStatus = allChaptersCompleted
+            ? "Mastered"
+            : "In Progress";
+
+        // -----------------------------------------
+        // 5. Update enrollment
+        // -----------------------------------------
+
+        const updatedEnrollment = await db
+            .update(enrollCourseTable)
+            .set({
+                completedChapters: completed,
+                CourseStatus: courseStatus,
+            })
+            .where(
+                and(
+                    eq(enrollCourseTable.cid, courseId),
+                    eq(enrollCourseTable.userEmail, email)
+                )
+            )
+            .returning();
+
+        // -----------------------------------------
+        // 6. Get all user's enrollments
+        // -----------------------------------------
+
+        const enrollments = await db
+            .select({
+                cid: enrollCourseTable.cid,
+                completedChapters: enrollCourseTable.completedChapters,
+            })
+            .from(enrollCourseTable)
+            .where(eq(enrollCourseTable.userEmail, email));
+
+        // -----------------------------------------
+        // 7. Get all courses
+        // -----------------------------------------
+
+        const courses = await db
+            .select({
+                cid: courseTable.cid,
+                courseJson: courseTable.courseJson,
+            })
+            .from(courseTable);
+
+        // -----------------------------------------
+        // 8. Calculate total study time
+        // -----------------------------------------
+
+        let totalStudyTime = 0;
+
+        for (const enrollment of enrollments) {
+            const enrolledCourse = courses.find(
+                (course) => course.cid === enrollment.cid
+            );
+
+            if (!enrolledCourse) continue;
+
+            const courseChapters =
+                enrolledCourse.courseJson?.course?.chapters || [];
+
+            const completedChapterIndexes = Array.isArray(
+                enrollment.completedChapters
+            )
+                ? enrollment.completedChapters.map(Number)
+                : [];
+
+            // Because completedChapters is ZERO-based,
+            // directly use the value as the array index.
+            for (const chapterIndex of completedChapterIndexes) {
+                const chapter = courseChapters[chapterIndex];
+
+                if (!chapter) continue;
+
+                totalStudyTime += parseDuration(chapter.duration);
+            }
+        }
+
+        // -----------------------------------------
+        // 9. Update user's total study time
+        // -----------------------------------------
+
+        await db
+            .update(usersTable)
+            .set({
+                TotalStudyTime: totalStudyTime,
+            })
+            .where(eq(usersTable.email, email));
+
+        // -----------------------------------------
+        // 10. Return response
+        // -----------------------------------------
+
+        return NextResponse.json({
+            success: true,
+            message: "Chapter progress updated successfully",
+            courseStatus,
+            totalStudyTime,
+            enrollment: updatedEnrollment[0],
+        });
+    } catch (error) {
+        console.error("Chapter progress error:", error);
+
+        return NextResponse.json(
+            {
+                success: false,
+                message: "Failed to update chapter progress",
+            },
+            { status: 500 }
+        );
+    }
+}
 
 
-     return NextResponse.json(result)
+// -----------------------------------------
+// Convert "1h 30m" → seconds
+// -----------------------------------------
+
+function parseDuration(duration) {
+    if (!duration) return 0;
+
+    const hourMatch = duration.match(/(\d+)\s*h/i);
+    const minuteMatch = duration.match(/(\d+)\s*m/i);
+
+    const hours = hourMatch ? parseInt(hourMatch[1]) : 0;
+    const minutes = minuteMatch ? parseInt(minuteMatch[1]) : 0;
+
+    return hours * 60 * 60 + minutes * 60;
 }

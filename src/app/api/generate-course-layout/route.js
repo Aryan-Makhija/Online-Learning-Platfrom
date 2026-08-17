@@ -3,13 +3,50 @@ import { courseTable } from "@/lib/config/schema"
 import { currentUser } from "@clerk/nextjs/server"
 
 import { GoogleGenAI } from "@google/genai"
+import { and, eq, sql } from "drizzle-orm"
 import { NextResponse } from "next/server"
 
 
 export async function POST(req) {
 
-    const {courseId,...formdata} = await req.json()
+    const { courseId, ...formdata } = await req.json()
     const user = await currentUser()
+
+
+
+    if (!user) {
+        return NextResponse.json({ message: "Unauhtorized user" }, { status: 401 })
+    }
+    // --------------------------------------------------
+    // 1. CHECK IF COURSE ALREADY EXISTS
+    // --------------------------------------------------
+
+    const existingCourse = await db
+        .select()
+        .from(courseTable)
+        .where(
+            and(
+                sql`LOWER(TRIM(${courseTable.name})) = LOWER(TRIM(${formdata.name}))`,
+                sql`LOWER(TRIM(${courseTable.level})) = LOWER(TRIM(${formdata.level}))`
+            )
+        )
+        .limit(1)
+
+    if (existingCourse.length > 0) {
+
+        return NextResponse.json(
+            {
+                success: false,
+                message: "Course already exists",
+                course: existingCourse[0]
+            },
+            {
+                status: 400
+            }
+        )
+    }
+
+
     const PROMPT = `Generate a Learning Course based on the following details. 
 Make sure to include:
 - Course Name  
@@ -52,7 +89,7 @@ Respond **only in JSON** using the following schema:
 User Input:${formdata} `;
 
 
-   const ai = new GoogleGenAI({
+    const ai = new GoogleGenAI({
         apiKey: process.env.GEMINI_API_KEY
     })
 
@@ -61,7 +98,7 @@ User Input:${formdata} `;
     }
 
 
-    const model = "gemini-2.5-flash"
+    const model = "gemini-3.5-flash"
     const contents = [
         {
             role: "user",
@@ -95,10 +132,10 @@ User Input:${formdata} `;
         ...formdata,
         courseJson: JSONResp,
         userEmail: user?.primaryEmailAddress?.emailAddress,
-        cid:courseId
+        cid: courseId
     })
 
 
 
-    return NextResponse.json({courseId:courseId})
+    return NextResponse.json({ courseId: courseId })
 }
