@@ -465,10 +465,13 @@ const WelcomeBanner = ({ activeTab, setActiveTab }) => {
             transition={{ delay: 0.3 }}
             className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3"
           >
-            <button className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-amber-500/20 transition-all hover:scale-105 active:scale-95 flex items-center gap-2">
-              <Zap className="w-4 h-4 fill-slate-950" />
-              <span>Create AI Course</span>
-            </button>
+            <AddnewCourse>
+
+              <button className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-amber-500/20 transition-all hover:scale-105 active:scale-95 flex items-center gap-2">
+                <Zap className="w-4 h-4 fill-slate-950" />
+                <span>Create AI Course</span>
+              </button>
+            </AddnewCourse>
 
             <button
               onClick={() => setActiveTab(activeTab === 'enrolled' ? 'explore' : 'enrolled')}

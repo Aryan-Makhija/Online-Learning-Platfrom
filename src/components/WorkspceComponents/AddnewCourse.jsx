@@ -280,7 +280,7 @@ const AddnewCourse = ({ children }) => {
               </label>
               <Input
                 value={formData.name}
-                placeholder="e.g. Master Next.js 15 & Full-Stack Web Development"
+                placeholder="e.g. Java Language or React js"
                 onChange={(e) => onHandleInputChange("name", e.target.value)}
                 className="rounded-xl border-slate-200 focus:border-amber-400 focus:ring-amber-400/20 h-10 sm:h-11 text-xs sm:text-sm font-medium"
               />

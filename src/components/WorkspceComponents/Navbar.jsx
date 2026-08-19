@@ -3,9 +3,10 @@
 
 import { UserButton } from "@clerk/nextjs"
 import { motion, AnimatePresence } from "framer-motion"
-import { GraduationCap, Menu, Sparkles, BookOpen, Compass } from "lucide-react"
+import { GraduationCap, Menu, Sparkles, BookOpen, Compass, X } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
+import AddnewCourse from "./AddnewCourse"
 
 
 
@@ -109,10 +110,13 @@ const WorkspaceNavbar = () => {
               })}
             </div>
 
-            <button className="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-700 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md">
-              <Sparkles className="w-4 h-4 text-amber-200" />
-              <span>Generate New AI Course</span>
-            </button>
+            <AddnewCourse>
+              <button className="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-700 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md">
+                <Sparkles className="w-4 h-4 text-amber-200" />
+                <span>Generate New AI Course</span>
+              </button>
+            </AddnewCourse>
+            
           </motion.div>
         )}
       </AnimatePresence>
