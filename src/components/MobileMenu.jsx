@@ -32,7 +32,7 @@ const MobileMenu = () => {
     const el = document.getElementById(id)
     if (!el) return
     el.scrollIntoView({ behavior: "smooth" })
-  }
+  } 
 
   return (
     <Sheet>
