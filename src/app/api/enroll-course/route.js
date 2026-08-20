@@ -14,15 +14,20 @@ export async function POST(req) {
 
     const enrollCourses = await db.select().from(enrollCourseTable).where(and(eq(enrollCourseTable.userEmail, user?.primaryEmailAddress.emailAddress), eq(enrollCourseTable?.cid, courseId)))
 
+    const course = await db.select().from(courseTable).where(eq(courseTable?.cid, courseId));
 
     if (enrollCourses?.length == 0) {
         const result = await db.insert(enrollCourseTable).values({
             cid: courseId,
             userEmail: user.primaryEmailAddress?.emailAddress
+
         }).returning(enrollCourseTable)
 
-
-        return NextResponse.json(result)
+        const courseLength = course[0].courseContent?.length
+        return NextResponse.json({
+            result,
+            courseLength
+        })
     }
 
     return NextResponse.json({ 'resp': 'Already Enrolled' })

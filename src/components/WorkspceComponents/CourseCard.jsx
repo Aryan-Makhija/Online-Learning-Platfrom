@@ -39,12 +39,23 @@ const CourseCard = ({ course }) => {
       })
 
 
+
       if (response.data.resp) {
         toast.warning("Already Enrolled To Course")
         return;
       }
-      toast.success("Enrolled To Course")
-      router.push("/workspace/edit-course/" + course?.cid)
+
+      if (response.data.courseLength > 0) {
+        toast.success("Enrolled To Course")
+        router.push("/workspace/view-course/" + course?.cid)
+        return
+      }
+      if (response.data.resp) {
+        toast.warning("Already Enrolled To Course")
+        return
+      }
+
+
 
 
 
