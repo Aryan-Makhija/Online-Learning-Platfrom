@@ -5,20 +5,27 @@ import usersTable from "../../../lib/config/schema";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
-    const { email, name } = await request.json()
 
-    //if user already exist
-    const user = await db.select().from(usersTable).where(eq(usersTable.email, email))
+    try {
 
-    //if not then insert new  user
-    if (user?.length === 0) {
-        const result = await db.insert(usersTable).values({
-            name: name,
-            email: email
-        }).returning(usersTable)
+        const { email, name } = await request.json()
 
-        return NextResponse.json(result)
+        //if user already exist
+        const user = await db.select().from(usersTable).where(eq(usersTable.email, email))
+
+        //if not then insert new  user
+        if (user?.length === 0) {
+            const result = await db.insert(usersTable).values({
+                name: name,
+                email: email
+            }).returning(usersTable)
+
+            return NextResponse.json(result)
+        }
+
+        return NextResponse.json(user[0])
+    } catch (err) {
+        console.log(err.message)
+        return NextResponse.json({ message: err.message }, { status: 402 })
     }
-
-    return NextResponse.json(user[0])
 }

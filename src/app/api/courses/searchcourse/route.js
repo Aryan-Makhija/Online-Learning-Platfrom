@@ -6,14 +6,21 @@ import { NextResponse } from "next/server"
 
 export async function POST(req) {
 
-    const { name } = await req.json()
 
-    if (!name) {
-        return NextResponse.json({ message: "name is required" }, { status: 401 })
+    try {
+
+        const { name } = await req.json()
+
+        if (!name) {
+            return NextResponse.json({ message: "name is required" }, { status: 401 })
+        }
+
+        const result = await db.select().from(courseTable).where(sql`${courseTable.name} ILIKE ${'%' + name + '%'}`); // case-insensitive partial match
+        return NextResponse.json(result)
+    } catch (err) {
+        console.log(err.message)
+        return NextResponse.json({ message: err.message }, { status: 402 })
     }
-
-    const result = await db.select().from(courseTable).where(sql`${courseTable.name} ILIKE ${'%' + name + '%'}`); // case-insensitive partial match
-    return NextResponse.json(result)
 
 
 } 
