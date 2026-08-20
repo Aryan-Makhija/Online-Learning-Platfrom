@@ -32,8 +32,9 @@ import {
   Video
 } from "lucide-react";
 
-import MobileMenu from "@/components/MobileMenu";
+
 import Footer from "@/components/HomePage/Footer";
+import MobileMenu from "@/components/HomePage/MobileMenu";
 
 
 // Background floating icons

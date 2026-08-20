@@ -1,9 +1,4 @@
 import React from 'react'
-import WorkSpaceProvider from './Provider'
-import { Toaster } from '@/components/ui/sonner'
-import CourseProvider from './Provider';
-
-
 
 export const metadata = {
     title: "EduAI/Course",
@@ -13,15 +8,10 @@ export const metadata = {
 
 const WorkSpacelayout = ({ children }) => {
     return (
-        // <CourseProvider>
-
-        
-
+    
 
                 <div>{children}</div>
             
-        // </CourseProvider>
-
     )
 }
 
