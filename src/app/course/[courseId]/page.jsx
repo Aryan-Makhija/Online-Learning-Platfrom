@@ -478,7 +478,7 @@ export default function CourseNotesPage() {
                                             )}
 
                                             <span className="break-words leading-5 pr-2">
-                                                {chapter?.chapterNumber ?? originalIndex + 1}. {chapter?.chapterTitle}
+                                                {originalIndex + 1}. {chapter?.chapterTitle}
                                             </span>
                                         </div>
 
