@@ -558,7 +558,7 @@ export default function CourseNotesPage() {
 
                             <div className="flex items-center gap-2 text-xs font-semibold text-amber-800 tracking-wide uppercase">
                                 <FileText size={14} />
-                                <span>Chapter {currentChapter?.chapterNumber ?? activeChapterIndex + 1}</span>
+                                <span>Chapter {activeChapterIndex + 1}</span>
                             </div>
 
                             <div className="flex items-center gap-3 text-xs text-slate-500">
