@@ -3,7 +3,7 @@
 
 import ChapterTopicList from '@/components/EditCourse/ChapterTopicList'
 import CourseInfo from '@/components/EditCourse/CourseInfo'
-import Footer from '@/components/WorkspceComponents/Footer'
+
 import WorkspaceNavbar from '@/components/WorkspceComponents/Navbar'
 import axios from 'axios'
 import { useParams } from 'next/navigation'

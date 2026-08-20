@@ -1,7 +1,6 @@
 import Chapterheader from '@/components/Course/ChapterHeader'
 import ChapterListSidebar from '@/components/Course/ChapterListSidebar'
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
-import AppHeader from '@/components/WorkspceComponents/AppHeader'
 import React from 'react'
 
 

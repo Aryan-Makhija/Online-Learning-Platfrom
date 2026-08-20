@@ -28,64 +28,10 @@ import CourseList from '@/components/WorkspceComponents/CourseList'
 import EnrollCourseList from '@/components/WorkspceComponents/EnrollCourseList'
 import axios from 'axios'
 import AddnewCourse from '@/components/WorkspceComponents/AddnewCourse'
-import Footer from '@/components/WorkspceComponents/Footer'
-// import CourseList from '@/components/WorkspceComponents/CourseList'
-// import EnrollCourseList from '@/components/WorkspceComponents/EnrollCourseList'
+import WorkspaceNavbar from '@/components/WorkspceComponents/Navbar'
+import DashboardWidgets from '@/components/WorkspceComponents/DashboardWidgets'
+import Footer from '@/components/HomePage/Footer'
 
-// Example Component Imports (Adjust path if needed in your project)
-// import EnrollCourseList from '@/components/EnrollCourseList'
-// import CourseCard from '@/components/CourseCard'
-
-
-
-
-
-
-/* -------------------------------------------------------------------------- */
-/* FALLBACK / DEMO COMPONENTS FOR ENROLLED LIST & COURSE CARDS                */
-/* -------------------------------------------------------------------------- */
-// const EnrollCourseList = () => (
-//   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-//     {[1, 2, 3].map((i) => (
-//       <div key={i} className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-//         <div>
-//           <div className="h-40 bg-gradient-to-br from-amber-500/10 via-amber-100 to-amber-50 rounded-xl mb-4 flex items-center justify-center text-amber-700 font-bold border border-amber-200/50">
-//             <BookOpen className="w-8 h-8 opacity-80" />
-//           </div>
-//           <span className="text-[11px] font-bold tracking-wide uppercase text-amber-600 bg-amber-50 px-2.5 py-1 rounded-md">In Progress</span>
-//           <h3 className="text-base font-bold text-slate-900 mt-2">Active AI Learning Module #{i}</h3>
-//           <p className="text-xs text-slate-500 mt-1 line-clamp-2">Master adaptive prompt engineering and dynamic application workflows.</p>
-//         </div>
-//         <div className="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
-//           <span className="text-xs font-semibold text-slate-500">8 / 12 Lessons</span>
-//           <button className="text-xs font-bold text-amber-700 hover:text-amber-800 flex items-center gap-1">
-//             Continue <ChevronRight className="w-3.5 h-3.5" />
-//           </button>
-//         </div>
-//       </div>
-//     ))}
-//   </div>
-// )
-
-// const CourseCard = ({ courseId }) => (
-//   <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
-//     <div>
-//       <div className="h-40 bg-slate-900 rounded-xl mb-4 flex items-center justify-center text-amber-400 font-bold relative overflow-hidden">
-//         <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/20 to-transparent opacity-60" />
-//         <Code2 className="w-10 h-10 group-hover:scale-110 transition-transform text-amber-400 z-10" />
-//       </div>
-//       <span className="text-[11px] font-bold tracking-wide uppercase text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md">Featured Course</span>
-//       <h3 className="text-base font-bold text-slate-900 mt-2">Full-Stack AI Architecture #{courseId}</h3>
-//       <p className="text-xs text-slate-500 mt-1 line-clamp-2">Explore complete integration patterns with modern LLMs and real-time backend systems.</p>
-//     </div>
-//     <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between">
-//       <span className="text-xs font-medium text-slate-500">Self-Paced • 14 Modules</span>
-//       <button className="px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-colors">
-//         Enroll Now
-//       </button>
-//     </div>
-//   </div>
-// )
 
 /* -------------------------------------------------------------------------- */
 /* 1. ANIMATED AI EDUCATOR ANIME MASCOT                                       */
@@ -167,122 +113,7 @@ const AIEducatorMascot = () => {
   )
 }
 
-/* -------------------------------------------------------------------------- */
-/* 2. WORKSPACE NAVBAR (NAVIGATION TO PAGES & CLERK USER BUTTON)              */
-/* -------------------------------------------------------------------------- */
-const WorkspaceNavbar = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const navItems = [
-    { label: 'My Learning', icon: BookOpen, href: '/workspace/my-learning' },
-    { label: 'Explore Courses', icon: Compass, href: '/workspace/explore' },
-  ]
-
-  return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20 gap-4">
-
-          {/* Brand Logo */}
-          <Link href="/workspace" className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-500 via-amber-600 to-amber-700 flex items-center justify-center text-white shadow-md shadow-amber-500/20 group-hover:scale-105 transition-transform">
-              <GraduationCap className="w-6 h-6" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-black tracking-tight text-slate-900 leading-none">
-                Edu<span className="text-amber-600">AI</span>
-              </span>
-              <span className="text-[10px] font-bold text-amber-700/80 tracking-wider uppercase mt-0.5">
-                Workspace
-              </span>
-            </div>
-          </Link>
-
-          {/* Dedicated Page Links Navigation */}
-          <nav className="hidden md:flex items-center gap-1 bg-slate-100/90 p-1.5 rounded-2xl border border-slate-200/80">
-            {navItems.map((item) => {
-              const Icon = item.icon
-              return (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className="flex items-center gap-2 px-5 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 hover:bg-white transition-all duration-200 shadow-none hover:shadow-sm"
-                >
-                  <Icon className="w-4 h-4 text-amber-600" />
-                  {item.label}
-                </Link>
-              )
-            })}
-          </nav>
-
-          {/* Action Trigger & Clerk User Button */}
-          <div className="hidden sm:flex items-center gap-4">
-            <AddnewCourse>
-
-              <button className="relative group overflow-hidden rounded-2xl bg-gradient-to-r from-amber-500 via-amber-600 to-amber-700 hover:from-amber-600 hover:to-amber-800 text-white font-bold text-xs sm:text-sm px-5 py-3 shadow-md shadow-amber-500/20 transition-all hover:scale-[1.02] active:scale-[0.98]">
-                <span className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-amber-200 animate-pulse" />
-                  <span>Generate Course</span>
-                </span>
-              </button>
-            </AddnewCourse>
-
-            {/* Clerk User Profile Icon */}
-            <div className="flex items-center justify-center pl-1 border-l border-slate-200">
-              <UserButton afterSignOutUrl="/" />
-            </div>
-          </div>
-
-          {/* Mobile Menu Toggle */}
-          <div className="flex items-center gap-3 sm:hidden">
-            <UserButton afterSignOutUrl="/" />
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-
-        </div>
-      </div>
-
-      {/* Mobile Drawer */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="sm:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-3"
-          >
-            <div className="grid grid-cols-2 gap-2">
-              {navItems.map((item) => {
-                const Icon = item.icon
-                return (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-center gap-2 py-3 px-3 rounded-xl text-xs font-bold bg-slate-50 text-slate-700 border border-slate-200"
-                  >
-                    <Icon className="w-4 h-4 text-amber-600" />
-                    {item.label}
-                  </Link>
-                )
-              })}
-            </div>
-
-            <button className="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-700 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md">
-              <Sparkles className="w-4 h-4 text-amber-200" />
-              <span>Generate New AI Course</span>
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
-  )
-}
 
 /* -------------------------------------------------------------------------- */
 /* 3. HERO WELCOME BANNER                                                     */
@@ -362,59 +193,7 @@ const WelcomeBanner = ({ activeTab, setActiveTab }) => {
   )
 }
 
-/* -------------------------------------------------------------------------- */
-/* 4. STATIC DASHBOARD FEATURE WIDGETS (STATIC & PRE-COMPUTED)                */
-/* -------------------------------------------------------------------------- */
-const DashboardWidgets = () => {
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
 
-      {/* Widget 1: Static Curriculum Overview */}
-      <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm flex items-center gap-4 hover:border-amber-300 transition-colors">
-        <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center text-white shrink-0 shadow-md shadow-orange-500/20">
-          <Layers className="w-6 h-6" />
-        </div>
-        <div className="flex-1">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Learning Tracks</span>
-            <span className="text-xs font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full">Available</span>
-          </div>
-          <div className="text-xl font-black text-slate-900 mt-0.5">24+ AI Modules</div>
-          <p className="text-xs text-slate-500 mt-0.5">Structured pathways from basics to production level.</p>
-        </div>
-      </div>
-
-      {/* Widget 2: Static Interactive Labs */}
-      <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm flex items-center gap-4 hover:border-amber-300 transition-colors">
-        <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center text-amber-400 shrink-0 shadow-md">
-          <Award className="w-6 h-6" />
-        </div>
-        <div className="flex-1">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Practical Exercises</span>
-            <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full font-sans">Self-Paced</span>
-          </div>
-          <div className="text-xl font-black text-slate-900 mt-0.5">100+ Hands-On Labs</div>
-          <p className="text-xs text-slate-500 mt-0.5 font-medium">Interactive code sandboxes & quiz checks.</p>
-        </div>
-      </div>
-
-      {/* Widget 3: AI Learning Tip Card */}
-      <div className="bg-gradient-to-br from-amber-500/10 via-amber-50/50 to-white rounded-2xl p-5 border border-amber-200/80 shadow-sm flex items-start gap-3">
-        <div className="w-9 h-9 rounded-xl bg-amber-500 flex items-center justify-center text-white shrink-0 shadow-sm mt-0.5">
-          <BrainCircuit className="w-5 h-5" />
-        </div>
-        <div className="flex-1">
-          <span className="text-xs font-bold text-amber-900 uppercase tracking-wider">AI Daily Tip</span>
-          <p className="text-xs text-slate-700 mt-1 leading-relaxed font-medium">
-            "Testing yourself right after reading a section increases retention by up to 40%."
-          </p>
-        </div>
-      </div>
-
-    </div>
-  )
-}
 
 /* -------------------------------------------------------------------------- */
 /* 5. MAIN WORKSPACE PAGE COMPONENT                                           */

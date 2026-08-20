@@ -33,7 +33,8 @@ import {
 } from "lucide-react";
 
 import MobileMenu from "@/components/MobileMenu";
-import Footer from "@/components/WorkspceComponents/Footer";
+import Footer from "@/components/HomePage/Footer";
+
 
 // Background floating icons
 const floatingIcons = [

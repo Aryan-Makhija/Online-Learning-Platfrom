@@ -7,7 +7,8 @@ import { BookOpen, Search, X, Compass, Sparkles } from 'lucide-react'
 import { motion } from 'framer-motion'
 import CourseCard from '@/components/WorkspceComponents/CourseCard'
 import WorkspaceNavbar from '@/components/WorkspceComponents/Navbar'
-import Footer from '@/components/WorkspceComponents/Footer'
+import Footer from '@/components/HomePage/Footer'
+
 
 // Skeleton Loader matching the yellow/orange warm theme structure
 const CourseCardSkeleton = () => {

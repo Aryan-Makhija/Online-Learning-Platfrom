@@ -17,7 +17,8 @@ import {
 import EnrollCourseList from "@/components/WorkspceComponents/EnrollCourseList";
 import { Button } from "@/components/ui/button";
 import WorkspaceNavbar from "@/components/WorkspceComponents/Navbar";
-import Footer from "@/components/WorkspceComponents/Footer";
+import Footer from "@/components/HomePage/Footer";
+
 
 const MyLearning = ({ user, activeCourse }) => {
   const [selectedShelf, setSelectedShelf] = useState("active");
